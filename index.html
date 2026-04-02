@@ -31,7 +31,6 @@
   .screen { display: none; min-height: 100dvh; flex-direction: column; }
   .screen.active { display: flex; }
 
-  /* TOPBAR */
   .topbar {
     display: flex;
     align-items: center;
@@ -75,7 +74,6 @@
   }
   .btn-icon:active { transform: scale(0.92); background: var(--surface2); }
 
-  /* BODY */
   .scroll-body { flex: 1; padding: 20px; overflow-y: auto; padding-bottom: 120px; }
 
   .section-label {
@@ -120,12 +118,16 @@
 
   .card-tag {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
+    font-size: 26px;
     letter-spacing: 2px;
     color: var(--accent);
     line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  .card.group-card .card-tag { color: var(--accent2); font-size: 22px; }
+  .card.group-card .card-tag { color: var(--accent2); font-size: 20px; }
+  .card-icon { font-size: 26px; line-height: 1; }
 
   .card-actions { display: flex; gap: 8px; }
 
@@ -168,7 +170,6 @@
   .empty-state .icon { font-size: 44px; margin-bottom: 14px; }
   .empty-state p { font-size: 13px; line-height: 1.7; }
 
-  /* FAB */
   .fab {
     position: fixed;
     bottom: 90px;
@@ -187,7 +188,6 @@
   }
   .fab:active { transform: scale(0.9); }
 
-  /* BACKUP BAR */
   .backup-bar {
     display: flex;
     gap: 10px;
@@ -218,7 +218,7 @@
   .btn-backup .bk-icon { font-size: 16px; }
   .btn-backup:active { border-color: var(--accent2); color: var(--accent2); transform: scale(0.96); }
 
-  /* EDIT FORM */
+  /* FORM */
   .field-group { margin-bottom: 18px; }
 
   .field-label {
@@ -246,9 +246,14 @@
   .field-input:focus { border-color: var(--accent); }
   .field-input::placeholder { color: var(--muted); }
 
-  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .emoji-input {
+    font-size: 32px;
+    text-align: center;
+    padding: 10px;
+    letter-spacing: 0;
+  }
 
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
   .num-block { display: flex; flex-direction: column; gap: 8px; }
 
   .num-input {
@@ -290,30 +295,12 @@
   }
   .btn-save:active { transform: scale(0.97); opacity: 0.85; }
 
-  /* SELECT GROUP */
-  .group-select {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    color: var(--text);
-    padding: 14px 16px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    cursor: pointer;
-  }
-  .group-select:focus { border-color: var(--accent); }
-  .group-select option { background: var(--surface2); }
-
-  /* ACTIVE WORKOUT */
+  /* ACTIVE */
   .active-topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 20px 12px;
+    padding: 16px 20px 12px;
     border-bottom: 1px solid var(--border);
   }
 
@@ -324,11 +311,20 @@
     color: var(--muted);
   }
 
+  .active-right { display: flex; align-items: center; gap: 10px; }
+
+  .cronometro {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--accent2);
+    letter-spacing: 1px;
+  }
+
   .btn-stop {
     background: rgba(245,66,66,0.12);
     border: 1px solid rgba(245,66,66,0.3);
     color: var(--danger);
-    padding: 8px 16px;
+    padding: 8px 14px;
     border-radius: 10px;
     font-family: 'Space Mono', monospace;
     font-size: 11px;
@@ -448,7 +444,7 @@
   }
   .btn-next-exercise:active { border-color: var(--accent2); color: var(--accent2); }
 
-  /* REST OVERLAY */
+  /* REST */
   .rest-overlay {
     position: fixed; inset: 0;
     background: rgba(10,10,15,0.96);
@@ -518,7 +514,7 @@
     color: var(--accent);
     line-height: 1;
   }
-  .finish-sub { font-size: 14px; color: var(--muted); }
+  .finish-sub { font-size: 14px; color: var(--muted); line-height: 1.8; }
   .btn-finish {
     background: var(--accent);
     color: #0a0a0f;
@@ -554,16 +550,6 @@
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
   .divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
-
-  /* breadcrumb */
-  .breadcrumb {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--muted);
-    margin-bottom: 16px;
-  }
-  .breadcrumb span { color: var(--accent2); }
 </style>
 </head>
 <body>
@@ -572,7 +558,7 @@
 <div id="home-screen" class="screen active">
   <div class="topbar">
     <div class="logo">TREINO<span>.</span></div>
-    <button class="btn-icon" onclick="openNewGroup()" title="Novo grupo" style="background:var(--surface2);border-color:var(--accent2);color:var(--accent2)">📁</button>
+    <button class="btn-icon" onclick="openNewGroup()" title="Novo grupo" style="background:var(--surface2);border-color:var(--accent2);color:var(--accent2);font-size:22px">🏋️</button>
   </div>
   <div class="scroll-body">
     <div class="section-label">Grupos de treino</div>
@@ -610,6 +596,10 @@
     <div style="width:40px"></div>
   </div>
   <div class="scroll-body">
+    <div class="field-group">
+      <label class="field-label">Ícone (emoji)</label>
+      <input id="grp-icon" class="field-input emoji-input" type="text" placeholder="🏋️" maxlength="4">
+    </div>
     <div class="field-group">
       <label class="field-label">Nome do grupo</label>
       <input id="grp-name" class="field-input" type="text" placeholder="Ex: Hipertrofia Janeiro" maxlength="50">
@@ -660,7 +650,10 @@
 <div id="active-screen" class="screen">
   <div class="active-topbar">
     <div class="active-label" id="active-workout-label">TREINO A</div>
-    <button class="btn-stop" onclick="confirmStop()">ENCERRAR</button>
+    <div class="active-right">
+      <div class="cronometro" id="cronometro">00:00</div>
+      <button class="btn-stop" onclick="confirmStop()">ENCERRAR</button>
+    </div>
   </div>
   <div class="active-body">
     <div class="ex-progress" id="ex-progress">EXERCÍCIO 1 / 6</div>
@@ -716,6 +709,9 @@ let currentSerie = 0;
 let restInterval = null;
 let restCallback = null;
 let audioCtx = null;
+let wakeLock = null;
+let cronoInterval = null;
+let cronoSeconds = 0;
 
 // ── UTILS ──
 function show(id) {
@@ -733,6 +729,8 @@ function persist() {
 
 function goHome() {
   clearRest();
+  stopCrono();
+  releaseWakeLock();
   document.getElementById('rest-overlay').classList.remove('show');
   document.getElementById('finish-overlay').classList.remove('show');
   renderGroups();
@@ -744,12 +742,11 @@ function playBeep() {
   try {
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const ctx = audioCtx;
-    const beeps = [
-      { freq: 880, start: 0,   dur: 0.12 },
-      { freq: 880, start: 0.18, dur: 0.12 },
+    [
+      { freq: 880,  start: 0,    dur: 0.12 },
+      { freq: 880,  start: 0.18, dur: 0.12 },
       { freq: 1320, start: 0.36, dur: 0.25 },
-    ];
-    beeps.forEach(b => {
+    ].forEach(b => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.connect(gain); gain.connect(ctx.destination);
@@ -764,22 +761,78 @@ function playBeep() {
   } catch(e) {}
 }
 
+// ── VIBRAÇÃO ──
+function vibrate() {
+  try {
+    if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 400]);
+  } catch(e) {}
+}
+
+function alertEnd() {
+  playBeep();
+  vibrate();
+}
+
+// ── WAKELOCK ──
+async function requestWakeLock() {
+  try {
+    if ('wakeLock' in navigator) {
+      wakeLock = await navigator.wakeLock.request('screen');
+    }
+  } catch(e) {}
+}
+
+function releaseWakeLock() {
+  try { if (wakeLock) { wakeLock.release(); wakeLock = null; } } catch(e) {}
+}
+
+// ── CRONÔMETRO ──
+function startCrono() {
+  cronoSeconds = 0;
+  updateCronoDisplay();
+  cronoInterval = setInterval(() => {
+    cronoSeconds++;
+    updateCronoDisplay();
+  }, 1000);
+}
+
+function stopCrono() {
+  if (cronoInterval) { clearInterval(cronoInterval); cronoInterval = null; }
+}
+
+function updateCronoDisplay() {
+  const m = String(Math.floor(cronoSeconds / 60)).padStart(2, '0');
+  const s = String(cronoSeconds % 60).padStart(2, '0');
+  document.getElementById('cronometro').textContent = `${m}:${s}`;
+}
+
+function formatCrono(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  if (m === 0) return `${s}s`;
+  return s === 0 ? `${m}min` : `${m}min ${s}s`;
+}
+
 // ── GROUPS ──
 function renderGroups() {
   const list = document.getElementById('group-list');
   if (data.groups.length === 0) {
     list.innerHTML = `<div class="empty-state">
-      <div class="icon">📁</div>
-      <p>Nenhum grupo criado ainda.<br>Toque em 📁 para criar seu primeiro grupo<br>e organize seus treinos por período.</p>
+      <div class="icon">🏋️</div>
+      <p>Nenhum grupo criado ainda.<br>Toque em 🏋️ para criar seu primeiro grupo<br>e organize seus treinos por período.</p>
     </div>`;
     return;
   }
   list.innerHTML = data.groups.map(g => {
     const count = data.workouts.filter(w => w.groupId === g.id).length;
+    const icon = g.icon || '🏋️';
     return `
     <div class="card group-card" onclick="openGroup('${g.id}')">
       <div class="card-header">
-        <div class="card-tag">📁 ${esc(g.name)}</div>
+        <div class="card-tag">
+          <span class="card-icon">${esc(icon)}</span>
+          ${esc(g.name)}
+        </div>
         <div class="card-actions">
           <button class="btn-sm" onclick="event.stopPropagation();editGroup('${g.id}')">✏️</button>
           <button class="btn-sm" onclick="event.stopPropagation();deleteGroup('${g.id}')">🗑️</button>
@@ -793,6 +846,7 @@ function renderGroups() {
 function openNewGroup() {
   editingGroupId = null;
   document.getElementById('edit-group-title').textContent = 'NOVO GRUPO';
+  document.getElementById('grp-icon').value = '';
   document.getElementById('grp-name').value = '';
   show('edit-group-screen');
 }
@@ -802,18 +856,20 @@ function editGroup(id) {
   if (!g) return;
   editingGroupId = id;
   document.getElementById('edit-group-title').textContent = 'EDITAR GRUPO';
+  document.getElementById('grp-icon').value = g.icon || '';
   document.getElementById('grp-name').value = g.name;
   show('edit-group-screen');
 }
 
 function saveGroup() {
   const name = document.getElementById('grp-name').value.trim();
+  const icon = document.getElementById('grp-icon').value.trim() || '🏋️';
   if (!name) { alert('Dá um nome pro grupo!'); return; }
   if (editingGroupId) {
     const g = data.groups.find(x => x.id === editingGroupId);
-    g.name = name;
+    g.name = name; g.icon = icon;
   } else {
-    data.groups.push({ id: Date.now().toString(), name });
+    data.groups.push({ id: Date.now().toString(), name, icon });
   }
   persist();
   renderGroups();
@@ -836,7 +892,8 @@ function deleteGroup(id) {
 function openGroup(id) {
   currentGroupId = id;
   const g = data.groups.find(x => x.id === id);
-  document.getElementById('group-screen-title').textContent = g ? g.name.toUpperCase() : 'TREINOS';
+  const icon = g ? (g.icon || '🏋️') : '';
+  document.getElementById('group-screen-title').textContent = g ? `${icon} ${g.name.toUpperCase()}` : 'TREINOS';
   renderWorkouts();
   show('group-screen');
 }
@@ -846,7 +903,7 @@ function renderWorkouts() {
   const workouts = data.workouts.filter(w => w.groupId === currentGroupId);
   if (workouts.length === 0) {
     list.innerHTML = `<div class="empty-state">
-      <div class="icon">🏋️</div>
+      <div class="icon">💪</div>
       <p>Nenhum treino ainda.<br>Toque no <strong>+</strong> para adicionar.</p>
     </div>`;
     return;
@@ -920,10 +977,11 @@ function startWorkout(id) {
   activeWorkout = data.workouts.find(w => w.id === id);
   if (!activeWorkout) return;
   currentExIdx = 0; currentSerie = 0;
-  // Inicializa AudioContext com gesto do usuário
   if (!audioCtx) {
     try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
   }
+  requestWakeLock();
+  startCrono();
   document.getElementById('active-workout-label').textContent = activeWorkout.name.toUpperCase();
   renderActiveExercise();
   show('active-screen');
@@ -988,7 +1046,7 @@ function startRest(seconds, cb) {
     if (rem <= 0) {
       clearRest();
       overlay.classList.remove('show');
-      playBeep();
+      alertEnd();
       cb();
     }
   }, 1000);
@@ -1009,17 +1067,21 @@ function clearRest() {
 // ── FINISH ──
 function finishWorkout() {
   clearRest();
+  stopCrono();
+  releaseWakeLock();
   document.getElementById('rest-overlay').classList.remove('show');
   const total = activeWorkout.exercises * activeWorkout.series;
   document.getElementById('finish-stats').textContent =
-    `${activeWorkout.exercises} exercícios · ${total} séries concluídas`;
-  playBeep();
+    `${activeWorkout.exercises} exercícios · ${total} séries\nTempo total: ${formatCrono(cronoSeconds)}`;
+  alertEnd();
   document.getElementById('finish-overlay').classList.add('show');
 }
 
 function confirmStop() {
   if (confirm('Encerrar o treino agora?')) {
     clearRest();
+    stopCrono();
+    releaseWakeLock();
     document.getElementById('rest-overlay').classList.remove('show');
     goHome();
   }
@@ -1056,7 +1118,7 @@ function importJSON(event) {
         data = imported;
       }
       persist(); renderGroups(); show('home-screen');
-      showToast(`✓ Importado com sucesso!`);
+      showToast('✓ Importado com sucesso!');
     } catch {
       showToast('❌ Arquivo inválido');
     }
