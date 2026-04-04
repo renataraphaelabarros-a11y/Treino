@@ -43,552 +43,275 @@
     z-index: 10;
   }
 
-  .logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 4px;
-    color: var(--accent);
-  }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 4px; color: var(--accent); }
   .logo span { color: var(--text); }
 
-  .topbar-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    letter-spacing: 3px;
-    color: var(--text);
-    text-align: center;
-    flex: 1;
-  }
+  .topbar-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 3px; color: var(--text); text-align: center; flex: 1; }
 
   .btn-icon {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    width: 40px; height: 40px;
-    border-radius: 10px;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    width: 40px; height: 40px; border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    font-size: 18px;
-    transition: all 0.15s;
-    flex-shrink: 0;
+    cursor: pointer; font-size: 18px; transition: all 0.15s; flex-shrink: 0;
   }
   .btn-icon:active { transform: scale(0.92); background: var(--surface2); }
 
   .scroll-body { flex: 1; padding: 20px; overflow-y: auto; padding-bottom: 120px; }
 
   .section-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 14px;
+    font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 3px;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 14px;
   }
 
-  /* CARDS */
   .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 18px;
-    margin-bottom: 12px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: border-color 0.2s;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 18px; margin-bottom: 12px; position: relative; overflow: hidden;
+    cursor: pointer; transition: border-color 0.2s;
   }
   .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-    background: var(--accent);
-    border-radius: 4px 0 0 4px;
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%; background: var(--accent); border-radius: 4px 0 0 4px;
   }
   .card.group-card::before { background: var(--accent2); }
   .card:active { border-color: var(--accent); }
   .card.group-card:active { border-color: var(--accent2); }
 
-  .card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 6px;
-  }
-
-  .card-tag {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px;
-    letter-spacing: 2px;
-    color: var(--accent);
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .card-tag { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; color: var(--accent); line-height: 1; display: flex; align-items: center; gap: 8px; }
   .card.group-card .card-tag { color: var(--accent2); font-size: 20px; }
   .card-icon { font-size: 26px; line-height: 1; }
-
   .card-actions { display: flex; gap: 8px; }
 
   .btn-sm {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.15s;
+    background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
+    padding: 6px 10px; border-radius: 8px; font-size: 13px; cursor: pointer; transition: all 0.15s;
   }
   .btn-sm:active { transform: scale(0.9); }
 
-  .card-name { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
   .card-meta { font-size: 12px; color: var(--muted); font-family: 'Space Mono', monospace; }
 
   .btn-start {
-    width: 100%;
-    margin-top: 14px;
-    background: var(--accent);
-    color: #0a0a0f;
-    border: none;
-    padding: 14px;
-    border-radius: 12px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: all 0.15s;
+    width: 100%; margin-top: 14px; background: var(--accent); color: #0a0a0f; border: none;
+    padding: 14px; border-radius: 12px; font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; letter-spacing: 3px; cursor: pointer; transition: all 0.15s;
   }
   .btn-start:active { transform: scale(0.97); opacity: 0.85; }
 
-  .empty-state {
-    text-align: center;
-    padding: 50px 20px;
-    color: var(--muted);
-  }
+  .empty-state { text-align: center; padding: 50px 20px; color: var(--muted); }
   .empty-state .icon { font-size: 44px; margin-bottom: 14px; }
   .empty-state p { font-size: 13px; line-height: 1.7; }
 
   .fab {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    background: var(--accent);
-    color: #0a0a0f;
-    width: 52px; height: 52px;
-    border-radius: 14px;
-    border: none;
-    font-size: 24px;
+    position: fixed; bottom: 90px; right: 20px;
+    background: var(--accent); color: #0a0a0f; width: 52px; height: 52px;
+    border-radius: 14px; border: none; font-size: 24px;
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 8px 28px rgba(200,245,66,0.35);
-    transition: all 0.15s;
-    z-index: 100;
+    cursor: pointer; box-shadow: 0 8px 28px rgba(200,245,66,0.35);
+    transition: all 0.15s; z-index: 100;
   }
   .fab:active { transform: scale(0.9); }
 
   .backup-bar {
-    display: flex;
-    gap: 10px;
-    padding: 14px 20px;
-    border-top: 1px solid var(--border);
-    background: var(--bg);
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
+    display: flex; gap: 10px; padding: 14px 20px;
+    border-top: 1px solid var(--border); background: var(--bg);
+    position: fixed; bottom: 0; left: 0; right: 0;
   }
 
   .btn-backup {
-    flex: 1;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 12px 8px;
-    border-radius: 12px;
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.15s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
+    flex: 1; background: var(--surface); border: 1px solid var(--border); color: var(--muted);
+    padding: 12px 8px; border-radius: 12px; font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 1px; cursor: pointer; transition: all 0.15s;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
   }
   .btn-backup .bk-icon { font-size: 16px; }
   .btn-backup:active { border-color: var(--accent2); color: var(--accent2); transform: scale(0.96); }
 
-  /* FORM */
   .field-group { margin-bottom: 18px; }
-
   .field-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: block;
+    font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 8px; display: block;
   }
-
   .field-input {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    color: var(--text);
-    padding: 14px 16px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.2s;
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; color: var(--text); padding: 14px 16px;
+    font-family: 'DM Sans', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s;
   }
   .field-input:focus { border-color: var(--accent); }
   .field-input::placeholder { color: var(--muted); }
-
-  .emoji-input {
-    font-size: 32px;
-    text-align: center;
-    padding: 10px;
-    letter-spacing: 0;
-  }
+  .emoji-input { font-size: 32px; text-align: center; padding: 10px; letter-spacing: 0; }
 
   .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
   .num-block { display: flex; flex-direction: column; gap: 8px; }
-
   .num-input {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    color: var(--text);
-    padding: 16px 12px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 1px;
-    outline: none;
-    text-align: center;
-    width: 100%;
-    transition: border-color 0.2s;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    color: var(--text); padding: 16px 12px; font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 1px; outline: none; text-align: center;
+    width: 100%; transition: border-color 0.2s;
   }
   .num-input:focus { border-color: var(--accent); }
   .num-input::placeholder { color: var(--muted); font-size: 20px; }
 
-  .save-bar {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    padding: 16px 20px;
-    background: var(--bg);
-    border-top: 1px solid var(--border);
-  }
-
+  .save-bar { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 20px; background: var(--bg); border-top: 1px solid var(--border); }
   .btn-save {
-    width: 100%;
-    background: var(--accent);
-    color: #0a0a0f;
-    border: none;
-    padding: 16px;
-    border-radius: 14px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 3px;
-    cursor: pointer;
+    width: 100%; background: var(--accent); color: #0a0a0f; border: none;
+    padding: 16px; border-radius: 14px; font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 3px; cursor: pointer;
   }
   .btn-save:active { transform: scale(0.97); opacity: 0.85; }
 
   /* ACTIVE */
-  .active-topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 20px 12px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .active-label {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: var(--muted);
-  }
-
+  .active-topbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 12px; border-bottom: 1px solid var(--border); }
+  .active-label { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 4px; color: var(--muted); }
   .active-right { display: flex; align-items: center; gap: 10px; }
-
-  .cronometro {
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    color: var(--accent2);
-    letter-spacing: 1px;
-  }
+  .cronometro { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--accent2); letter-spacing: 1px; }
 
   .btn-stop {
-    background: rgba(245,66,66,0.12);
-    border: 1px solid rgba(245,66,66,0.3);
-    color: var(--danger);
-    padding: 8px 14px;
-    border-radius: 10px;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    cursor: pointer;
+    background: rgba(245,66,66,0.12); border: 1px solid rgba(245,66,66,0.3); color: var(--danger);
+    padding: 8px 14px; border-radius: 10px; font-family: 'Space Mono', monospace; font-size: 11px; cursor: pointer;
   }
   .btn-stop:active { background: rgba(245,66,66,0.25); }
 
-  .active-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 28px 20px;
-    gap: 22px;
-    overflow-y: auto;
-  }
+  .active-body { flex: 1; display: flex; flex-direction: column; padding: 28px 20px; gap: 22px; overflow-y: auto; }
 
-  .ex-progress {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--muted);
-    text-align: center;
-  }
+  .ex-progress { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--muted); text-align: center; }
+  .ex-number-big { font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: var(--accent); text-align: center; line-height: 1; }
+  .ex-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--muted); text-align: center; margin-top: -12px; }
 
-  .ex-number-big {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 80px;
-    color: var(--accent);
-    text-align: center;
-    line-height: 1;
-  }
-
-  .ex-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: var(--muted);
-    text-align: center;
-    margin-top: -12px;
-  }
-
-  .series-row {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
+  .series-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
   .serie-dot {
-    width: 46px; height: 46px;
-    border-radius: 12px;
-    border: 2px solid var(--border);
-    background: var(--surface);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    color: var(--muted);
-    transition: all 0.2s;
+    width: 46px; height: 46px; border-radius: 12px; border: 2px solid var(--border);
+    background: var(--surface); display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--muted); transition: all 0.2s;
   }
   .serie-dot.done { background: var(--accent); border-color: var(--accent); color: #0a0a0f; }
   .serie-dot.current { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 0 3px rgba(200,245,66,0.2); }
 
   .info-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-  .info-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 16px;
-    text-align: center;
-  }
-  .info-card-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-  .info-card-value {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    color: var(--accent2);
-    line-height: 1;
-  }
+  .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
+  .info-card-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+  .info-card-value { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--accent2); line-height: 1; }
   .info-card-unit { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
   .action-area { display: flex; flex-direction: column; gap: 10px; padding-bottom: 20px; }
-
   .btn-done-serie {
-    width: 100%;
-    background: var(--accent);
-    color: #0a0a0f;
-    border: none;
-    padding: 18px;
-    border-radius: 16px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 24px;
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: all 0.15s;
+    width: 100%; background: var(--accent); color: #0a0a0f; border: none;
+    padding: 18px; border-radius: 16px; font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px; letter-spacing: 3px; cursor: pointer; transition: all 0.15s;
   }
   .btn-done-serie:active { transform: scale(0.97); opacity: 0.85; }
   .btn-done-serie:disabled { opacity: 0.35; cursor: not-allowed; }
 
   .btn-next-exercise {
-    width: 100%;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 14px;
-    border-radius: 14px;
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 2px;
-    cursor: pointer;
+    width: 100%; background: transparent; border: 1px solid var(--border); color: var(--muted);
+    padding: 14px; border-radius: 14px; font-family: 'Space Mono', monospace;
+    font-size: 12px; letter-spacing: 2px; cursor: pointer;
   }
   .btn-next-exercise:active { border-color: var(--accent2); color: var(--accent2); }
 
   /* REST */
   .rest-overlay {
-    position: fixed; inset: 0;
-    background: rgba(10,10,15,0.96);
-    backdrop-filter: blur(10px);
-    z-index: 150;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    text-align: center;
+    position: fixed; inset: 0; background: rgba(10,10,15,0.97);
+    backdrop-filter: blur(10px); z-index: 150; display: none;
+    flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center;
   }
   .rest-overlay.show { display: flex; }
 
-  .rest-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    letter-spacing: 6px;
-    color: var(--accent2);
+  .rest-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 6px; color: var(--accent2); }
+  .rest-timer-big { font-family: 'Bebas Neue', sans-serif; font-size: 100px; color: var(--text); line-height: 1; }
+  .rest-timer-big.tick { color: var(--accent); }
+
+  .rest-next {
+    font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--muted);
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 8px 18px;
   }
-  .rest-timer-big {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 100px;
-    color: var(--text);
-    line-height: 1;
-  }
-  .rest-sub {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--muted);
-  }
+  .rest-next span { color: var(--accent2); }
+
   .btn-skip-rest {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 12px 32px;
-    border-radius: 12px;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    cursor: pointer;
-    margin-top: 8px;
+    background: transparent; border: 1px solid var(--border); color: var(--muted);
+    padding: 12px 32px; border-radius: 12px; font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 2px; cursor: pointer; margin-top: 4px;
   }
-  .btn-skip-rest:active { border-color: var(--accent2); color: var(--accent2); }
+  .btn-skip-rest:active { border-color: var(--danger); color: var(--danger); }
+
+  /* RESUME BANNER */
+  .resume-banner {
+    background: var(--surface2); border: 1px solid var(--accent2); border-radius: 14px;
+    padding: 16px 18px; margin-bottom: 12px; display: none;
+    align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .resume-banner.show { display: flex; }
+  .resume-text { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--accent2); letter-spacing: 1px; line-height: 1.6; }
+  .btn-resume {
+    background: var(--accent2); color: #0a0a0f; border: none; padding: 10px 16px;
+    border-radius: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 16px;
+    letter-spacing: 2px; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  }
 
   /* FINISH */
   .finish-overlay {
-    position: fixed; inset: 0;
-    background: var(--bg);
-    z-index: 200;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    text-align: center;
-    padding: 40px;
+    position: fixed; inset: 0; background: var(--bg); z-index: 200; display: none;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 20px; text-align: center; padding: 40px;
   }
   .finish-overlay.show { display: flex; }
   .finish-icon { font-size: 68px; animation: pulse 1s ease-in-out infinite alternate; }
   @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.12); } }
-  .finish-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 54px;
-    letter-spacing: 4px;
-    color: var(--accent);
-    line-height: 1;
-  }
+  .finish-title { font-family: 'Bebas Neue', sans-serif; font-size: 54px; letter-spacing: 4px; color: var(--accent); line-height: 1; }
   .finish-sub { font-size: 14px; color: var(--muted); line-height: 1.8; }
   .btn-finish {
-    background: var(--accent);
-    color: #0a0a0f;
-    border: none;
-    padding: 16px 48px;
-    border-radius: 14px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 3px;
-    cursor: pointer;
-    margin-top: 8px;
+    background: var(--accent); color: #0a0a0f; border: none; padding: 16px 48px;
+    border-radius: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 22px;
+    letter-spacing: 3px; cursor: pointer; margin-top: 8px;
   }
 
-  /* TOAST */
   .toast {
-    position: fixed;
-    bottom: 80px; left: 50%;
+    position: fixed; bottom: 80px; left: 50%;
     transform: translateX(-50%) translateY(20px);
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 1px;
-    opacity: 0;
-    transition: all 0.3s;
-    pointer-events: none;
-    white-space: nowrap;
-    z-index: 500;
+    background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+    padding: 10px 20px; border-radius: 20px; font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 1px; opacity: 0; transition: all 0.3s;
+    pointer-events: none; white-space: nowrap; z-index: 500;
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
   .divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 </style>
 </head>
 <body>
 
-<!-- ══ HOME: GRUPOS ══ -->
+<!-- HOME -->
 <div id="home-screen" class="screen active">
   <div class="topbar">
     <div class="logo">TREINO<span>.</span></div>
-    <button class="btn-icon" onclick="openNewGroup()" title="Novo grupo" style="background:var(--surface2);border-color:var(--accent2);color:var(--accent2);font-size:22px">🏋️</button>
+    <button class="btn-icon" onclick="openNewGroup()" style="background:var(--surface2);border-color:var(--accent2);color:var(--accent2);font-size:22px">🏋️</button>
   </div>
   <div class="scroll-body">
+    <div id="resume-banner" class="resume-banner">
+      <div class="resume-text" id="resume-text">Treino em andamento</div>
+      <button class="btn-resume" onclick="resumeWorkout()">RETOMAR</button>
+    </div>
     <div class="section-label">Grupos de treino</div>
     <div id="group-list"></div>
   </div>
   <div class="backup-bar">
-    <button class="btn-backup" onclick="exportJSON()">
-      <span class="bk-icon">⬇️</span>EXPORTAR
-    </button>
-    <button class="btn-backup" onclick="document.getElementById('import-input').click()">
-      <span class="bk-icon">⬆️</span>IMPORTAR
-    </button>
+    <button class="btn-backup" onclick="exportJSON()"><span class="bk-icon">⬇️</span>EXPORTAR</button>
+    <button class="btn-backup" onclick="document.getElementById('import-input').click()"><span class="bk-icon">⬆️</span>IMPORTAR</button>
     <input type="file" id="import-input" accept=".json" style="display:none" onchange="importJSON(event)">
   </div>
 </div>
 
-<!-- ══ WORKOUTS DENTRO DO GRUPO ══ -->
+<!-- GRUPO -->
 <div id="group-screen" class="screen">
   <div class="topbar">
     <button class="btn-icon" onclick="show('home-screen')">←</button>
     <div class="topbar-title" id="group-screen-title">GRUPO</div>
     <div style="width:40px"></div>
   </div>
-  <div class="scroll-body">
-    <div id="workout-list"></div>
-  </div>
+  <div class="scroll-body"><div id="workout-list"></div></div>
   <button class="fab" onclick="openNewWorkout()">＋</button>
 </div>
 
-<!-- ══ EDIT GRUPO ══ -->
+<!-- EDIT GRUPO -->
 <div id="edit-group-screen" class="screen">
   <div class="topbar">
     <button class="btn-icon" onclick="show('home-screen')">←</button>
@@ -605,12 +328,10 @@
       <input id="grp-name" class="field-input" type="text" placeholder="Ex: Hipertrofia Janeiro" maxlength="50">
     </div>
   </div>
-  <div class="save-bar">
-    <button class="btn-save" onclick="saveGroup()">SALVAR GRUPO</button>
-  </div>
+  <div class="save-bar"><button class="btn-save" onclick="saveGroup()">SALVAR GRUPO</button></div>
 </div>
 
-<!-- ══ EDIT TREINO ══ -->
+<!-- EDIT TREINO -->
 <div id="edit-workout-screen" class="screen">
   <div class="topbar">
     <button class="btn-icon" onclick="show('group-screen')">←</button>
@@ -641,12 +362,10 @@
       </div>
     </div>
   </div>
-  <div class="save-bar">
-    <button class="btn-save" onclick="saveWorkout()">SALVAR TREINO</button>
-  </div>
+  <div class="save-bar"><button class="btn-save" onclick="saveWorkout()">SALVAR TREINO</button></div>
 </div>
 
-<!-- ══ ACTIVE ══ -->
+<!-- ACTIVE -->
 <div id="active-screen" class="screen">
   <div class="active-topbar">
     <div class="active-label" id="active-workout-label">TREINO A</div>
@@ -683,11 +402,11 @@
 <div class="rest-overlay" id="rest-overlay">
   <div class="rest-title">DESCANSANDO</div>
   <div class="rest-timer-big" id="rest-countdown">60</div>
-  <div class="rest-sub">PRÓXIMA SÉRIE EM BREVE</div>
-  <button class="btn-skip-rest" onclick="skipRest()">PULAR DESCANSO</button>
+  <div class="rest-next" id="rest-next">PRÓXIMO: <span>EXERCÍCIO 2</span></div>
+  <button class="btn-skip-rest" onclick="confirmSkipRest()">PULAR DESCANSO</button>
 </div>
 
-<!-- FINISH OVERLAY -->
+<!-- FINISH -->
 <div class="finish-overlay" id="finish-overlay">
   <div class="finish-icon">🏆</div>
   <div class="finish-title">TREINO<br>CONCLUÍDO!</div>
@@ -712,20 +431,16 @@ let audioCtx = null;
 let wakeLock = null;
 let cronoInterval = null;
 let cronoSeconds = 0;
+let isResting = false;
+let restRemaining = 0;
 
 // ── UTILS ──
 function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
-
-function esc(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-function persist() {
-  localStorage.setItem('treino_v3', JSON.stringify(data));
-}
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function persist() { localStorage.setItem('treino_v3', JSON.stringify(data)); }
 
 function goHome() {
   clearRest();
@@ -738,50 +453,45 @@ function goHome() {
 }
 
 // ── SOUND ──
-function playBeep() {
+function playTone(freq, startDelay, dur, vol) {
   try {
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const ctx = audioCtx;
-    [
-      { freq: 880,  start: 0,    dur: 0.12 },
-      { freq: 880,  start: 0.18, dur: 0.12 },
-      { freq: 1320, start: 0.36, dur: 0.25 },
-    ].forEach(b => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.connect(gain); gain.connect(ctx.destination);
-      osc.frequency.value = b.freq;
-      osc.type = 'sine';
-      gain.gain.setValueAtTime(0, ctx.currentTime + b.start);
-      gain.gain.linearRampToValueAtTime(0.4, ctx.currentTime + b.start + 0.01);
-      gain.gain.linearRampToValueAtTime(0, ctx.currentTime + b.start + b.dur);
-      osc.start(ctx.currentTime + b.start);
-      osc.stop(ctx.currentTime + b.start + b.dur + 0.05);
-    });
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.frequency.value = freq;
+    osc.type = 'sine';
+    gain.gain.setValueAtTime(0, ctx.currentTime + startDelay);
+    gain.gain.linearRampToValueAtTime(vol, ctx.currentTime + startDelay + 0.01);
+    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + startDelay + dur);
+    osc.start(ctx.currentTime + startDelay);
+    osc.stop(ctx.currentTime + startDelay + dur + 0.05);
   } catch(e) {}
+}
+
+function playBeep() {
+  // 3 bipes fortes e longos
+  playTone(880,  0,    0.25, 1.0);
+  playTone(880,  0.35, 0.25, 1.0);
+  playTone(1320, 0.70, 0.50, 1.0);
+}
+
+function playTickBeep() {
+  // bipe curto de contagem
+  playTone(660, 0, 0.12, 0.9);
 }
 
 // ── VIBRAÇÃO ──
 function vibrate() {
-  try {
-    if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 400]);
-  } catch(e) {}
+  try { if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 400]); } catch(e) {}
 }
-
-function alertEnd() {
-  playBeep();
-  vibrate();
-}
+function alertEnd() { playBeep(); vibrate(); }
 
 // ── WAKELOCK ──
 async function requestWakeLock() {
-  try {
-    if ('wakeLock' in navigator) {
-      wakeLock = await navigator.wakeLock.request('screen');
-    }
-  } catch(e) {}
+  try { if ('wakeLock' in navigator) wakeLock = await navigator.wakeLock.request('screen'); } catch(e) {}
 }
-
 function releaseWakeLock() {
   try { if (wakeLock) { wakeLock.release(); wakeLock = null; } } catch(e) {}
 }
@@ -790,49 +500,95 @@ function releaseWakeLock() {
 function startCrono() {
   cronoSeconds = 0;
   updateCronoDisplay();
-  cronoInterval = setInterval(() => {
-    cronoSeconds++;
-    updateCronoDisplay();
-  }, 1000);
+  cronoInterval = setInterval(() => { cronoSeconds++; updateCronoDisplay(); }, 1000);
 }
-
-function stopCrono() {
-  if (cronoInterval) { clearInterval(cronoInterval); cronoInterval = null; }
-}
-
+function stopCrono() { if (cronoInterval) { clearInterval(cronoInterval); cronoInterval = null; } }
 function updateCronoDisplay() {
   const m = String(Math.floor(cronoSeconds / 60)).padStart(2, '0');
   const s = String(cronoSeconds % 60).padStart(2, '0');
-  document.getElementById('cronometro').textContent = `${m}:${s}`;
+  const el = document.getElementById('cronometro');
+  if (el) el.textContent = `${m}:${s}`;
 }
-
 function formatCrono(sec) {
-  const m = Math.floor(sec / 60);
-  const s = sec % 60;
+  const m = Math.floor(sec / 60), s = sec % 60;
   if (m === 0) return `${s}s`;
   return s === 0 ? `${m}min` : `${m}min ${s}s`;
+}
+
+// ── SAVE/RESTORE TREINO ATIVO ──
+function saveActiveState() {
+  if (!activeWorkout) return;
+  localStorage.setItem('treino_active', JSON.stringify({
+    workoutId: activeWorkout.id,
+    currentExIdx,
+    currentSerie,
+    cronoSeconds,
+    isResting,
+    restRemaining
+  }));
+}
+
+function clearActiveState() {
+  localStorage.removeItem('treino_active');
+}
+
+function checkResume() {
+  const saved = localStorage.getItem('treino_active');
+  if (!saved) return;
+  try {
+    const s = JSON.parse(saved);
+    const w = data.workouts.find(x => x.id === s.workoutId);
+    if (!w) { clearActiveState(); return; }
+    const banner = document.getElementById('resume-banner');
+    const text = document.getElementById('resume-text');
+    text.innerHTML = `TREINO EM ANDAMENTO<br><span style="color:var(--text)">${w.name} · Exercício ${s.currentExIdx + 1}/${w.exercises}</span>`;
+    banner.classList.add('show');
+    banner._state = s;
+  } catch { clearActiveState(); }
+}
+
+function resumeWorkout() {
+  const banner = document.getElementById('resume-banner');
+  const s = banner._state;
+  if (!s) return;
+  const w = data.workouts.find(x => x.id === s.workoutId);
+  if (!w) return;
+  banner.classList.remove('show');
+  activeWorkout = w;
+  currentExIdx = s.currentExIdx;
+  currentSerie = s.currentSerie;
+  cronoSeconds = s.cronoSeconds || 0;
+  if (!audioCtx) { try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {} }
+  requestWakeLock();
+  updateCronoDisplay();
+  cronoInterval = setInterval(() => { cronoSeconds++; updateCronoDisplay(); saveActiveState(); }, 1000);
+  document.getElementById('active-workout-label').textContent = activeWorkout.name.toUpperCase();
+  renderActiveExercise();
+  show('active-screen');
+  if (s.isResting && s.restRemaining > 0) {
+    const nextEx = currentExIdx + 1;
+    startRest(s.restRemaining, () => {
+      if (currentSerie >= activeWorkout.series) {
+        if (nextEx >= activeWorkout.exercises) finishWorkout();
+        else { currentExIdx++; currentSerie = 0; renderActiveExercise(); }
+      } else { renderActiveExercise(); }
+    }, nextEx);
+  }
 }
 
 // ── GROUPS ──
 function renderGroups() {
   const list = document.getElementById('group-list');
   if (data.groups.length === 0) {
-    list.innerHTML = `<div class="empty-state">
-      <div class="icon">🏋️</div>
-      <p>Nenhum grupo criado ainda.<br>Toque em 🏋️ para criar seu primeiro grupo<br>e organize seus treinos por período.</p>
-    </div>`;
+    list.innerHTML = `<div class="empty-state"><div class="icon">🏋️</div><p>Nenhum grupo criado ainda.<br>Toque em 🏋️ para criar seu primeiro grupo.</p></div>`;
     return;
   }
   list.innerHTML = data.groups.map(g => {
     const count = data.workouts.filter(w => w.groupId === g.id).length;
     const icon = g.icon || '🏋️';
-    return `
-    <div class="card group-card" onclick="openGroup('${g.id}')">
+    return `<div class="card group-card" onclick="openGroup('${g.id}')">
       <div class="card-header">
-        <div class="card-tag">
-          <span class="card-icon">${esc(icon)}</span>
-          ${esc(g.name)}
-        </div>
+        <div class="card-tag"><span class="card-icon">${esc(icon)}</span>${esc(g.name)}</div>
         <div class="card-actions">
           <button class="btn-sm" onclick="event.stopPropagation();editGroup('${g.id}')">✏️</button>
           <button class="btn-sm" onclick="event.stopPropagation();deleteGroup('${g.id}')">🗑️</button>
@@ -871,21 +627,15 @@ function saveGroup() {
   } else {
     data.groups.push({ id: Date.now().toString(), name, icon });
   }
-  persist();
-  renderGroups();
-  show('home-screen');
+  persist(); renderGroups(); show('home-screen');
 }
 
 function deleteGroup(id) {
   const count = data.workouts.filter(w => w.groupId === id).length;
-  const msg = count > 0
-    ? `Este grupo tem ${count} treino(s). Excluir o grupo também apaga os treinos. Confirmar?`
-    : 'Excluir este grupo?';
-  if (!confirm(msg)) return;
+  if (!confirm(count > 0 ? `Este grupo tem ${count} treino(s). Excluir tudo? ` : 'Excluir este grupo?')) return;
   data.groups = data.groups.filter(g => g.id !== id);
   data.workouts = data.workouts.filter(w => w.groupId !== id);
-  persist();
-  renderGroups();
+  persist(); renderGroups();
 }
 
 // ── WORKOUTS ──
@@ -902,10 +652,7 @@ function renderWorkouts() {
   const list = document.getElementById('workout-list');
   const workouts = data.workouts.filter(w => w.groupId === currentGroupId);
   if (workouts.length === 0) {
-    list.innerHTML = `<div class="empty-state">
-      <div class="icon">💪</div>
-      <p>Nenhum treino ainda.<br>Toque no <strong>+</strong> para adicionar.</p>
-    </div>`;
+    list.innerHTML = `<div class="empty-state"><div class="icon">💪</div><p>Nenhum treino ainda.<br>Toque no <strong>+</strong> para adicionar.</p></div>`;
     return;
   }
   list.innerHTML = workouts.map(w => `
@@ -919,17 +666,13 @@ function renderWorkouts() {
       </div>
       <div class="card-meta">${w.exercises} exercícios · ${w.series} séries · ${w.rest}s descanso</div>
       <button class="btn-start" onclick="startWorkout('${w.id}')">▶ INICIAR TREINO</button>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
 function openNewWorkout() {
   editingWorkoutId = null;
   document.getElementById('edit-workout-title').textContent = 'NOVO TREINO';
-  document.getElementById('wk-name').value = '';
-  document.getElementById('wk-exercises').value = '';
-  document.getElementById('wk-series').value = '';
-  document.getElementById('wk-rest').value = '';
+  ['wk-name','wk-exercises','wk-series','wk-rest'].forEach(id => document.getElementById(id).value = '');
   show('edit-workout-screen');
 }
 
@@ -955,21 +698,17 @@ function saveWorkout() {
   if (!series || series < 1) { alert('Informe o número de séries!'); return; }
   if (isNaN(rest)) { alert('Informe o tempo de descanso!'); return; }
   if (editingWorkoutId) {
-    const w = data.workouts.find(x => x.id === editingWorkoutId);
-    Object.assign(w, { name, exercises, series, rest });
+    Object.assign(data.workouts.find(x => x.id === editingWorkoutId), { name, exercises, series, rest });
   } else {
     data.workouts.push({ id: Date.now().toString(), groupId: currentGroupId, name, exercises, series, rest });
   }
-  persist();
-  renderWorkouts();
-  show('group-screen');
+  persist(); renderWorkouts(); show('group-screen');
 }
 
 function deleteWorkout(id) {
   if (!confirm('Excluir este treino?')) return;
   data.workouts = data.workouts.filter(w => w.id !== id);
-  persist();
-  renderWorkouts();
+  persist(); renderWorkouts();
 }
 
 // ── ACTIVE WORKOUT ──
@@ -977,13 +716,12 @@ function startWorkout(id) {
   activeWorkout = data.workouts.find(w => w.id === id);
   if (!activeWorkout) return;
   currentExIdx = 0; currentSerie = 0;
-  if (!audioCtx) {
-    try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
-  }
+  if (!audioCtx) { try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {} }
   requestWakeLock();
   startCrono();
   document.getElementById('active-workout-label').textContent = activeWorkout.name.toUpperCase();
   renderActiveExercise();
+  saveActiveState();
   show('active-screen');
 }
 
@@ -1004,6 +742,7 @@ function renderActiveExercise() {
     row.appendChild(dot);
   }
   document.getElementById('btn-done-serie').disabled = false;
+  saveActiveState();
 }
 
 function doneSerie() {
@@ -1013,12 +752,13 @@ function doneSerie() {
   if (currentSerie >= ex.series) {
     document.getElementById('btn-done-serie').disabled = true;
     const isLast = currentExIdx + 1 >= ex.exercises;
+    const nextEx = currentExIdx + 2;
     startRest(ex.rest, () => {
-      if (isLast) { finishWorkout(); }
+      if (isLast) finishWorkout();
       else { currentExIdx++; currentSerie = 0; renderActiveExercise(); }
-    });
+    }, isLast ? null : nextEx);
   } else {
-    startRest(ex.rest, () => renderActiveExercise());
+    startRest(ex.rest, () => renderActiveExercise(), currentExIdx + 1);
   }
 }
 
@@ -1031,37 +771,72 @@ function skipToNext() {
 }
 
 // ── REST ──
-function startRest(seconds, cb) {
+function startRest(seconds, cb, nextExNum) {
   clearRest();
   restCallback = cb;
-  if (seconds <= 0) { cb(); return; }
+  isResting = true;
+  if (seconds <= 0) { isResting = false; cb(); return; }
   let rem = seconds;
+  restRemaining = rem;
   const overlay = document.getElementById('rest-overlay');
   const countdown = document.getElementById('rest-countdown');
+  const nextEl = document.getElementById('rest-next');
+
+  // Próximo exercício info
+  if (nextExNum != null) {
+    nextEl.innerHTML = `PRÓXIMO: <span>EXERCÍCIO ${nextExNum}</span>`;
+    nextEl.style.display = 'block';
+  } else {
+    nextEl.style.display = 'none';
+  }
+
   overlay.classList.add('show');
   countdown.textContent = rem;
+  countdown.classList.remove('tick');
+
   restInterval = setInterval(() => {
     rem--;
+    restRemaining = rem;
     countdown.textContent = rem;
+
+    // Bipes nos últimos 3 segundos
+    if (rem > 0 && rem <= 3) {
+      countdown.classList.add('tick');
+      playTickBeep();
+      try { if (navigator.vibrate) navigator.vibrate(60); } catch(e) {}
+    } else {
+      countdown.classList.remove('tick');
+    }
+
+    saveActiveState();
+
     if (rem <= 0) {
       clearRest();
       overlay.classList.remove('show');
+      countdown.classList.remove('tick');
       alertEnd();
       cb();
     }
   }, 1000);
 }
 
+function confirmSkipRest() {
+  if (confirm('Pular o descanso?')) skipRest();
+}
+
 function skipRest() {
   const cb = restCallback;
   clearRest();
   document.getElementById('rest-overlay').classList.remove('show');
+  document.getElementById('rest-countdown').classList.remove('tick');
   if (cb) cb();
 }
 
 function clearRest() {
   if (restInterval) { clearInterval(restInterval); restInterval = null; }
   restCallback = null;
+  isResting = false;
+  restRemaining = 0;
 }
 
 // ── FINISH ──
@@ -1069,6 +844,7 @@ function finishWorkout() {
   clearRest();
   stopCrono();
   releaseWakeLock();
+  clearActiveState();
   document.getElementById('rest-overlay').classList.remove('show');
   const total = activeWorkout.exercises * activeWorkout.series;
   document.getElementById('finish-stats').textContent =
@@ -1079,9 +855,7 @@ function finishWorkout() {
 
 function confirmStop() {
   if (confirm('Encerrar o treino agora?')) {
-    clearRest();
-    stopCrono();
-    releaseWakeLock();
+    clearRest(); stopCrono(); releaseWakeLock(); clearActiveState();
     document.getElementById('rest-overlay').classList.remove('show');
     goHome();
   }
@@ -1089,9 +863,7 @@ function confirmStop() {
 
 // ── BACKUP ──
 function exportJSON() {
-  if (data.groups.length === 0 && data.workouts.length === 0) {
-    showToast('Nada para exportar ainda'); return;
-  }
+  if (data.groups.length === 0 && data.workouts.length === 0) { showToast('Nada para exportar ainda'); return; }
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -1110,18 +882,14 @@ function importJSON(event) {
       if (!imported.groups || !imported.workouts) throw new Error();
       const hasData = data.groups.length > 0 || data.workouts.length > 0;
       if (hasData && confirm('Mesclar com dados existentes? (Cancelar = substituir tudo)')) {
-        const existingGroupIds = new Set(data.groups.map(g => g.id));
-        const existingWorkoutIds = new Set(data.workouts.map(w => w.id));
-        imported.groups.forEach(g => { if (!existingGroupIds.has(g.id)) data.groups.push(g); });
-        imported.workouts.forEach(w => { if (!existingWorkoutIds.has(w.id)) data.workouts.push(w); });
-      } else {
-        data = imported;
-      }
+        const egIds = new Set(data.groups.map(g => g.id));
+        const ewIds = new Set(data.workouts.map(w => w.id));
+        imported.groups.forEach(g => { if (!egIds.has(g.id)) data.groups.push(g); });
+        imported.workouts.forEach(w => { if (!ewIds.has(w.id)) data.workouts.push(w); });
+      } else { data = imported; }
       persist(); renderGroups(); show('home-screen');
       showToast('✓ Importado com sucesso!');
-    } catch {
-      showToast('❌ Arquivo inválido');
-    }
+    } catch { showToast('❌ Arquivo inválido'); }
     event.target.value = '';
   };
   reader.readAsText(file);
@@ -1131,14 +899,14 @@ function importJSON(event) {
 let toastTimer = null;
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   if (toastTimer) clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
 }
 
 // ── INIT ──
 renderGroups();
+checkResume();
 </script>
 </body>
 </html>
