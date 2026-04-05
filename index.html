@@ -15,7 +15,7 @@
     --accent2: #42f5c8;
     --danger: #f54242;
     --text: #f0f0f0;
-    --muted: #9090a8;
+    --muted: #a0a0bc;
     --border: #2a2a3a;
   }
 
@@ -25,6 +25,7 @@
     background: var(--bg);
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
     min-height: 100dvh;
     overflow-x: hidden;
   }
@@ -32,53 +33,54 @@
   .screen { display: none; min-height: 100dvh; flex-direction: column; }
   .screen.active { display: flex; }
 
+  /* TOPBAR */
   .topbar {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 20px 12px; border-bottom: 1px solid var(--border);
+    padding: 20px 20px 14px; border-bottom: 1px solid var(--border);
     position: sticky; top: 0; background: var(--bg); z-index: 10;
   }
-  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 4px; color: var(--accent); }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 4px; color: var(--accent); }
   .logo span { color: var(--text); }
-  .topbar-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 3px; color: var(--text); text-align: center; flex: 1; }
-  .topbar-right { display: flex; gap: 8px; }
+  .topbar-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; color: var(--text); text-align: center; flex: 1; }
 
   .btn-icon {
     background: var(--surface); border: 1px solid var(--border); color: var(--text);
-    width: 40px; height: 40px; border-radius: 10px;
+    width: 44px; height: 44px; border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer; font-size: 18px; transition: all 0.15s; flex-shrink: 0;
+    cursor: pointer; font-size: 20px; transition: all 0.15s; flex-shrink: 0;
   }
   .btn-icon:active { transform: scale(0.92); background: var(--surface2); }
 
-  .scroll-body { flex: 1; padding: 20px; overflow-y: auto; padding-bottom: 80px; }
-
-  .section-label {
-    font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 3px;
-    color: var(--muted); text-transform: uppercase; margin-bottom: 14px;
-  }
-
-  /* DRIVE STATUS */
+  /* DRIVE BAR */
   .drive-bar {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 10px 20px; border-bottom: 1px solid var(--border);
+    padding: 12px 20px; border-bottom: 1px solid var(--border);
     background: var(--surface);
   }
-  .drive-status { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
-  .drive-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
+  .drive-status { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .drive-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
   .drive-dot.connected { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
   .drive-dot.syncing { background: var(--accent2); animation: blink 1s infinite; }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
   .btn-drive-connect {
     background: transparent; border: 1px solid var(--border); color: var(--muted);
-    padding: 6px 12px; border-radius: 8px; font-family: 'Space Mono', monospace;
-    font-size: 10px; letter-spacing: 1px; cursor: pointer;
+    padding: 7px 14px; border-radius: 8px; font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 1px; cursor: pointer; transition: all 0.2s;
   }
   .btn-drive-connect:active { border-color: var(--accent2); color: var(--accent2); }
+
+  /* SCROLL */
+  .scroll-body { flex: 1; padding: 20px; overflow-y: auto; padding-bottom: 90px; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 3px;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 16px;
+  }
 
   /* CARDS */
   .card {
     background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-    padding: 18px; margin-bottom: 12px; position: relative; overflow: hidden;
+    padding: 20px; margin-bottom: 14px; position: relative; overflow: hidden;
     cursor: pointer; transition: border-color 0.2s;
   }
   .card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); border-radius: 4px 0 0 4px; }
@@ -86,35 +88,35 @@
   .card:active { border-color: var(--accent); }
   .card.group-card:active { border-color: var(--accent2); }
 
-  .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
-  .card-tag { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; color: var(--accent); line-height: 1; display: flex; align-items: center; gap: 8px; }
-  .card.group-card .card-tag { color: var(--accent2); font-size: 22px; }
-  .card-icon { font-size: 26px; line-height: 1; }
+  .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .card-tag { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 2px; color: var(--accent); line-height: 1; display: flex; align-items: center; gap: 8px; }
+  .card.group-card .card-tag { color: var(--accent2); font-size: 24px; }
+  .card-icon { font-size: 28px; line-height: 1; }
   .card-actions { display: flex; gap: 8px; }
 
   .btn-sm {
     background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
-    padding: 6px 10px; border-radius: 8px; font-size: 14px; cursor: pointer; transition: all 0.15s;
+    padding: 8px 12px; border-radius: 8px; font-size: 15px; cursor: pointer; transition: all 0.15s;
   }
   .btn-sm:active { transform: scale(0.9); }
 
-  .card-meta { font-size: 13px; color: var(--muted); font-family: 'Space Mono', monospace; margin-top: 2px; }
+  .card-meta { font-size: 14px; color: var(--muted); font-family: 'Space Mono', monospace; margin-top: 4px; }
 
   .btn-start {
-    width: 100%; margin-top: 14px; background: var(--accent); color: #0a0a0f; border: none;
-    padding: 14px; border-radius: 12px; font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px; letter-spacing: 3px; cursor: pointer; transition: all 0.15s;
+    width: 100%; margin-top: 16px; background: var(--accent); color: #0a0a0f; border: none;
+    padding: 16px; border-radius: 12px; font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 3px; cursor: pointer; transition: all 0.15s;
   }
   .btn-start:active { transform: scale(0.97); opacity: 0.85; }
 
   .empty-state { text-align: center; padding: 50px 20px; color: var(--muted); }
-  .empty-state .icon { font-size: 44px; margin-bottom: 14px; }
-  .empty-state p { font-size: 14px; line-height: 1.7; }
+  .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+  .empty-state p { font-size: 15px; line-height: 1.8; }
 
   .fab {
     position: fixed; bottom: 24px; right: 20px;
-    background: var(--accent); color: #0a0a0f; width: 52px; height: 52px;
-    border-radius: 14px; border: none; font-size: 24px;
+    background: var(--accent); color: #0a0a0f; width: 56px; height: 56px;
+    border-radius: 16px; border: none; font-size: 26px;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer; box-shadow: 0 8px 28px rgba(200,245,66,0.35);
     transition: all 0.15s; z-index: 100;
@@ -123,112 +125,111 @@
 
   /* BACKUP discreto */
   .backup-row {
-    display: flex; gap: 8px; justify-content: center;
-    padding: 8px 20px 0;
+    display: flex; gap: 8px; justify-content: center; padding: 10px 20px 0;
   }
   .btn-backup-tiny {
     background: transparent; border: none; color: var(--border);
-    font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 1px;
+    font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1px;
     cursor: pointer; padding: 4px 8px; transition: color 0.2s;
   }
   .btn-backup-tiny:active { color: var(--muted); }
 
   /* FORM */
-  .field-group { margin-bottom: 18px; }
+  .field-group { margin-bottom: 20px; }
   .field-label {
-    font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 2px;
-    color: var(--muted); text-transform: uppercase; margin-bottom: 8px; display: block;
+    font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 2px;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 10px; display: block;
   }
   .field-input {
     width: 100%; background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; color: var(--text); padding: 14px 16px;
-    font-family: 'DM Sans', sans-serif; font-size: 16px; outline: none; transition: border-color 0.2s;
+    border-radius: 12px; color: var(--text); padding: 16px 18px;
+    font-family: 'DM Sans', sans-serif; font-size: 17px; outline: none; transition: border-color 0.2s;
   }
   .field-input:focus { border-color: var(--accent); }
   .field-input::placeholder { color: var(--muted); }
-  .emoji-input { font-size: 32px; text-align: center; padding: 10px; letter-spacing: 0; }
+  .emoji-input { font-size: 34px; text-align: center; padding: 12px; letter-spacing: 0; }
 
   .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
   .num-block { display: flex; flex-direction: column; gap: 8px; }
   .num-input {
     background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-    color: var(--text); padding: 16px 12px; font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px; letter-spacing: 1px; outline: none; text-align: center;
+    color: var(--text); padding: 18px 12px; font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; letter-spacing: 1px; outline: none; text-align: center;
     width: 100%; transition: border-color 0.2s;
   }
   .num-input:focus { border-color: var(--accent); }
-  .num-input::placeholder { color: var(--muted); font-size: 20px; }
+  .num-input::placeholder { color: var(--muted); font-size: 22px; }
 
   .save-bar { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 20px; background: var(--bg); border-top: 1px solid var(--border); }
   .btn-save {
     width: 100%; background: var(--accent); color: #0a0a0f; border: none;
-    padding: 16px; border-radius: 14px; font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px; letter-spacing: 3px; cursor: pointer;
+    padding: 18px; border-radius: 14px; font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px; letter-spacing: 3px; cursor: pointer;
   }
   .btn-save:active { transform: scale(0.97); opacity: 0.85; }
 
   /* ACTIVE */
-  .active-topbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 12px; border-bottom: 1px solid var(--border); }
-  .active-label { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 4px; color: var(--muted); }
-  .active-right { display: flex; align-items: center; gap: 10px; }
-  .cronometro { font-family: 'Space Mono', monospace; font-size: 14px; color: var(--accent2); letter-spacing: 1px; }
+  .active-topbar { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 14px; border-bottom: 1px solid var(--border); }
+  .active-label { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 4px; color: var(--muted); }
+  .active-right { display: flex; align-items: center; gap: 12px; }
+  .cronometro { font-family: 'Space Mono', monospace; font-size: 16px; color: var(--accent2); letter-spacing: 2px; }
   .btn-stop {
     background: rgba(245,66,66,0.12); border: 1px solid rgba(245,66,66,0.3); color: var(--danger);
-    padding: 8px 14px; border-radius: 10px; font-family: 'Space Mono', monospace; font-size: 12px; cursor: pointer;
+    padding: 10px 16px; border-radius: 10px; font-family: 'Space Mono', monospace; font-size: 12px; cursor: pointer;
   }
   .btn-stop:active { background: rgba(245,66,66,0.25); }
 
-  .active-body { flex: 1; display: flex; flex-direction: column; padding: 28px 20px; gap: 22px; overflow-y: auto; }
+  .active-body { flex: 1; display: flex; flex-direction: column; padding: 28px 20px; gap: 24px; overflow-y: auto; }
 
-  .ex-progress { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 2px; color: var(--muted); text-align: center; }
-  .ex-number-big { font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: var(--accent); text-align: center; line-height: 1; }
-  .ex-label { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 3px; color: var(--muted); text-align: center; margin-top: -12px; }
+  .ex-progress { font-family: 'Space Mono', monospace; font-size: 14px; letter-spacing: 2px; color: var(--muted); text-align: center; }
+  .ex-number-big { font-family: 'Bebas Neue', sans-serif; font-size: 88px; color: var(--accent); text-align: center; line-height: 1; }
+  .ex-label { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 3px; color: var(--muted); text-align: center; margin-top: -12px; }
 
-  .series-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .series-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
   .serie-dot {
-    width: 46px; height: 46px; border-radius: 12px; border: 2px solid var(--border);
+    width: 50px; height: 50px; border-radius: 12px; border: 2px solid var(--border);
     background: var(--surface); display: flex; align-items: center; justify-content: center;
-    font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--muted); transition: all 0.2s;
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--muted); transition: all 0.2s;
   }
   .serie-dot.done { background: var(--accent); border-color: var(--accent); color: #0a0a0f; }
   .serie-dot.current { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 0 3px rgba(200,245,66,0.2); }
 
   .info-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
-  .info-card-label { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
-  .info-card-value { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--accent2); line-height: 1; }
-  .info-card-unit { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; text-align: center; }
+  .info-card-label { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+  .info-card-value { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--accent2); line-height: 1; }
+  .info-card-unit { font-size: 14px; color: var(--muted); margin-top: 4px; }
 
-  .action-area { display: flex; flex-direction: column; gap: 10px; padding-bottom: 20px; }
+  .action-area { display: flex; flex-direction: column; gap: 12px; padding-bottom: 20px; }
   .btn-done-serie {
     width: 100%; background: var(--accent); color: #0a0a0f; border: none;
-    padding: 18px; border-radius: 16px; font-family: 'Bebas Neue', sans-serif;
-    font-size: 24px; letter-spacing: 3px; cursor: pointer; transition: all 0.15s;
+    padding: 20px; border-radius: 16px; font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px; letter-spacing: 3px; cursor: pointer; transition: all 0.15s;
   }
   .btn-done-serie:active { transform: scale(0.97); opacity: 0.85; }
   .btn-done-serie:disabled { opacity: 0.35; cursor: not-allowed; }
 
   .btn-next-exercise {
     width: 100%; background: transparent; border: 1px solid var(--border); color: var(--muted);
-    padding: 14px; border-radius: 14px; font-family: 'Space Mono', monospace;
+    padding: 16px; border-radius: 14px; font-family: 'Space Mono', monospace;
     font-size: 13px; letter-spacing: 2px; cursor: pointer;
   }
   .btn-next-exercise:active { border-color: var(--accent2); color: var(--accent2); }
 
-  /* PRÓXIMO EXERCÍCIO overlay */
+  /* PRÓXIMO EXERCÍCIO */
   .next-ex-overlay {
     position: fixed; inset: 0; background: rgba(10,10,15,0.97);
     backdrop-filter: blur(10px); z-index: 140; display: none;
     flex-direction: column; align-items: center; justify-content: center; gap: 20px; text-align: center; padding: 40px;
   }
   .next-ex-overlay.show { display: flex; }
-  .next-ex-label { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 4px; color: var(--muted); }
-  .next-ex-number { font-family: 'Bebas Neue', sans-serif; font-size: 100px; color: var(--accent); line-height: 1; }
-  .next-ex-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 4px; color: var(--text); }
+  .next-ex-label { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 4px; color: var(--muted); }
+  .next-ex-number { font-family: 'Bebas Neue', sans-serif; font-size: 110px; color: var(--accent); line-height: 1; }
+  .next-ex-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 4px; color: var(--text); }
   .btn-ready {
     background: var(--accent); color: #0a0a0f; border: none;
-    padding: 18px 48px; border-radius: 16px; font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px; letter-spacing: 4px; cursor: pointer; margin-top: 8px;
+    padding: 20px 52px; border-radius: 16px; font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 4px; cursor: pointer; margin-top: 8px;
   }
   .btn-ready:active { transform: scale(0.97); opacity: 0.85; }
 
@@ -236,63 +237,59 @@
   .rest-overlay {
     position: fixed; inset: 0; background: rgba(10,10,15,0.97);
     backdrop-filter: blur(10px); z-index: 150; display: none;
-    flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center;
+    flex-direction: column; align-items: center; justify-content: center; gap: 18px; text-align: center;
   }
   .rest-overlay.show { display: flex; }
-  .rest-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 6px; color: var(--accent2); }
-  .rest-timer-big { font-family: 'Bebas Neue', sans-serif; font-size: 100px; color: var(--text); line-height: 1; transition: color 0.2s; }
+  .rest-title { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 6px; color: var(--accent2); }
+  .rest-timer-big { font-family: 'Bebas Neue', sans-serif; font-size: 110px; color: var(--text); line-height: 1; transition: color 0.2s; }
   .rest-timer-big.tick { color: var(--accent); }
-  .rest-next {
-    font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 2px; color: var(--muted);
-    background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px 18px;
-  }
-  .rest-next span { color: var(--accent2); }
+  .rest-sub { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 2px; color: var(--muted); }
   .btn-skip-rest {
     background: transparent; border: 1px solid var(--border); color: var(--muted);
-    padding: 12px 32px; border-radius: 12px; font-family: 'Space Mono', monospace;
-    font-size: 12px; letter-spacing: 2px; cursor: pointer; margin-top: 4px;
+    padding: 14px 36px; border-radius: 12px; font-family: 'Space Mono', monospace;
+    font-size: 13px; letter-spacing: 2px; cursor: pointer; margin-top: 4px;
   }
   .btn-skip-rest:active { border-color: var(--danger); color: var(--danger); }
 
   /* RESUME */
   .resume-banner {
     background: var(--surface2); border: 1px solid var(--accent2); border-radius: 14px;
-    padding: 16px 18px; margin-bottom: 12px; display: none;
+    padding: 18px; margin-bottom: 14px; display: none;
     align-items: center; justify-content: space-between; gap: 12px;
   }
   .resume-banner.show { display: flex; }
-  .resume-text { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--accent2); letter-spacing: 1px; line-height: 1.7; }
+  .resume-text { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--accent2); letter-spacing: 1px; line-height: 1.8; }
   .btn-resume {
-    background: var(--accent2); color: #0a0a0f; border: none; padding: 10px 16px;
-    border-radius: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 16px;
+    background: var(--accent2); color: #0a0a0f; border: none; padding: 12px 18px;
+    border-radius: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 18px;
     letter-spacing: 2px; cursor: pointer; white-space: nowrap; flex-shrink: 0;
   }
 
   /* FINISH */
   .finish-overlay {
     position: fixed; inset: 0; background: var(--bg); z-index: 200; display: none;
-    flex-direction: column; align-items: center; justify-content: center; gap: 20px; text-align: center; padding: 40px;
+    flex-direction: column; align-items: center; justify-content: center; gap: 22px; text-align: center; padding: 40px;
   }
   .finish-overlay.show { display: flex; }
-  .finish-icon { font-size: 68px; animation: pulse 1s ease-in-out infinite alternate; }
+  .finish-icon { font-size: 72px; animation: pulse 1s ease-in-out infinite alternate; }
   @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.12); } }
-  .finish-title { font-family: 'Bebas Neue', sans-serif; font-size: 54px; letter-spacing: 4px; color: var(--accent); line-height: 1; }
-  .finish-sub { font-size: 15px; color: var(--muted); line-height: 1.8; }
+  .finish-title { font-family: 'Bebas Neue', sans-serif; font-size: 58px; letter-spacing: 4px; color: var(--accent); line-height: 1; }
+  .finish-sub { font-size: 16px; color: var(--muted); line-height: 1.9; }
   .btn-finish {
-    background: var(--accent); color: #0a0a0f; border: none; padding: 16px 48px;
-    border-radius: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; cursor: pointer; margin-top: 8px;
+    background: var(--accent); color: #0a0a0f; border: none; padding: 18px 52px;
+    border-radius: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 3px; cursor: pointer; margin-top: 8px;
   }
 
   .toast {
     position: fixed; bottom: 70px; left: 50%;
     transform: translateX(-50%) translateY(20px);
     background: var(--surface2); border: 1px solid var(--border); color: var(--text);
-    padding: 10px 20px; border-radius: 20px; font-family: 'Space Mono', monospace;
-    font-size: 12px; letter-spacing: 1px; opacity: 0; transition: all 0.3s;
+    padding: 12px 22px; border-radius: 20px; font-family: 'Space Mono', monospace;
+    font-size: 13px; letter-spacing: 1px; opacity: 0; transition: all 0.3s;
     pointer-events: none; white-space: nowrap; z-index: 500;
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-  .divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 </style>
 </head>
 <body>
@@ -301,10 +298,7 @@
 <div id="home-screen" class="screen active">
   <div class="topbar">
     <div class="logo">TREINO<span>.</span></div>
-    <div class="topbar-right">
-      <button class="btn-icon" id="btn-drive" onclick="toggleDrive()" title="Google Drive" style="font-size:16px">☁️</button>
-      <button class="btn-icon" onclick="openNewGroup()" style="background:var(--surface2);border-color:var(--accent2);color:var(--accent2);font-size:22px">🏋️</button>
-    </div>
+    <button class="btn-icon" onclick="openNewGroup()" style="background:var(--surface2);border-color:var(--accent2);color:var(--accent2)">🏋️</button>
   </div>
   <div class="drive-bar">
     <div class="drive-status">
@@ -322,12 +316,11 @@
     <div id="group-list"></div>
     <div class="backup-row">
       <button class="btn-backup-tiny" onclick="exportJSON()">⬇ exportar</button>
-      <span style="color:var(--border);font-size:10px">·</span>
+      <span style="color:var(--border);font-size:11px">·</span>
       <button class="btn-backup-tiny" onclick="document.getElementById('import-input').click()">⬆ importar</button>
       <input type="file" id="import-input" accept=".json" style="display:none" onchange="importJSON(event)">
     </div>
   </div>
-  <button class="fab" onclick="openNewGroup()" style="display:none"></button>
 </div>
 
 <!-- GRUPO -->
@@ -335,7 +328,7 @@
   <div class="topbar">
     <button class="btn-icon" onclick="show('home-screen')">←</button>
     <div class="topbar-title" id="group-screen-title">GRUPO</div>
-    <div style="width:40px"></div>
+    <div style="width:44px"></div>
   </div>
   <div class="scroll-body"><div id="workout-list"></div></div>
   <button class="fab" onclick="openNewWorkout()">＋</button>
@@ -346,7 +339,7 @@
   <div class="topbar">
     <button class="btn-icon" onclick="show('home-screen')">←</button>
     <div class="topbar-title" id="edit-group-title">NOVO GRUPO</div>
-    <div style="width:40px"></div>
+    <div style="width:44px"></div>
   </div>
   <div class="scroll-body">
     <div class="field-group">
@@ -366,7 +359,7 @@
   <div class="topbar">
     <button class="btn-icon" onclick="show('group-screen')">←</button>
     <div class="topbar-title" id="edit-workout-title">NOVO TREINO</div>
-    <div style="width:40px"></div>
+    <div style="width:44px"></div>
   </div>
   <div class="scroll-body">
     <div class="field-group">
@@ -428,19 +421,19 @@
   </div>
 </div>
 
-<!-- PRÓXIMO EXERCÍCIO overlay -->
+<!-- PRÓXIMO EXERCÍCIO -->
 <div class="next-ex-overlay" id="next-ex-overlay">
-  <div class="next-ex-label">PRÓXIMO</div>
+  <div class="next-ex-label">PRÓXIMO EXERCÍCIO</div>
   <div class="next-ex-number" id="next-ex-number">2</div>
   <div class="next-ex-title">PREPARE-SE</div>
   <button class="btn-ready" onclick="confirmNextEx()">PRONTA ✓</button>
 </div>
 
-<!-- REST overlay -->
+<!-- REST -->
 <div class="rest-overlay" id="rest-overlay">
   <div class="rest-title">DESCANSANDO</div>
   <div class="rest-timer-big" id="rest-countdown">60</div>
-  <div class="rest-next" id="rest-next">PRÓXIMA SÉRIE</div>
+  <div class="rest-sub">PRÓXIMA SÉRIE EM BREVE</div>
   <button class="btn-skip-rest" onclick="confirmSkipRest()">PULAR DESCANSO</button>
 </div>
 
@@ -492,44 +485,34 @@ function persist() {
 
 function goHome() {
   clearRest(); clearNextEx(); stopCrono(); releaseWakeLock();
-  document.getElementById('rest-overlay').classList.remove('show');
-  document.getElementById('next-ex-overlay').classList.remove('show');
-  document.getElementById('finish-overlay').classList.remove('show');
+  ['rest-overlay','next-ex-overlay','finish-overlay'].forEach(id => document.getElementById(id).classList.remove('show'));
   renderGroups(); show('home-screen');
 }
 
 // ── SOUND ──
-function playTone(freq, startDelay, dur, vol) {
+function playTone(freq, delay, dur, vol) {
   try {
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const ctx = audioCtx;
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
+    const ctx = audioCtx, osc = ctx.createOscillator(), gain = ctx.createGain();
     osc.connect(gain); gain.connect(ctx.destination);
     osc.frequency.value = freq; osc.type = 'sine';
-    gain.gain.setValueAtTime(0, ctx.currentTime + startDelay);
-    gain.gain.linearRampToValueAtTime(vol, ctx.currentTime + startDelay + 0.01);
-    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + startDelay + dur);
-    osc.start(ctx.currentTime + startDelay);
-    osc.stop(ctx.currentTime + startDelay + dur + 0.05);
+    gain.gain.setValueAtTime(0, ctx.currentTime + delay);
+    gain.gain.linearRampToValueAtTime(vol, ctx.currentTime + delay + 0.01);
+    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + delay + dur);
+    osc.start(ctx.currentTime + delay);
+    osc.stop(ctx.currentTime + delay + dur + 0.05);
   } catch(e) {}
 }
-function playBeep() {
-  playTone(880,  0,    0.25, 1.0);
-  playTone(880,  0.35, 0.25, 1.0);
-  playTone(1320, 0.70, 0.50, 1.0);
-}
-function playTickBeep() { playTone(660, 0, 0.12, 0.9); }
-function vibrate(pattern) { try { if (navigator.vibrate) navigator.vibrate(pattern); } catch(e) {} }
-function alertEnd() { playBeep(); vibrate([200, 100, 200, 100, 400]); }
+function playBeep() { playTone(880,0,0.25,1.0); playTone(880,0.35,0.25,1.0); playTone(1320,0.70,0.50,1.0); }
+function playTickBeep() { playTone(660,0,0.12,0.9); }
+function vibrate(p) { try { if (navigator.vibrate) navigator.vibrate(p); } catch(e) {} }
+function alertEnd() { playBeep(); vibrate([200,100,200,100,400]); }
 
 // ── WAKELOCK ──
 async function requestWakeLock() {
   try { if ('wakeLock' in navigator) wakeLock = await navigator.wakeLock.request('screen'); } catch(e) {}
 }
-function releaseWakeLock() {
-  try { if (wakeLock) { wakeLock.release(); wakeLock = null; } } catch(e) {}
-}
+function releaseWakeLock() { try { if (wakeLock) { wakeLock.release(); wakeLock = null; } } catch(e) {} }
 
 // ── CRONÔMETRO ──
 function startCrono() {
@@ -538,26 +521,22 @@ function startCrono() {
 }
 function stopCrono() { if (cronoInterval) { clearInterval(cronoInterval); cronoInterval = null; } }
 function updateCronoDisplay() {
-  const m = String(Math.floor(cronoSeconds / 60)).padStart(2,'0');
-  const s = String(cronoSeconds % 60).padStart(2,'0');
+  const m = String(Math.floor(cronoSeconds/60)).padStart(2,'0');
+  const s = String(cronoSeconds%60).padStart(2,'0');
   const el = document.getElementById('cronometro');
   if (el) el.textContent = `${m}:${s}`;
 }
 function formatCrono(sec) {
-  const m = Math.floor(sec / 60), s = sec % 60;
-  if (m === 0) return `${s}s`;
-  return s === 0 ? `${m}min` : `${m}min ${s}s`;
+  const m = Math.floor(sec/60), s = sec%60;
+  return m === 0 ? `${s}s` : s === 0 ? `${m}min` : `${m}min ${s}s`;
 }
 
 // ── GOOGLE DRIVE ──
-function toggleDrive() {
-  if (driveToken) { disconnectDrive(); } else { connectDrive(); }
-}
+function toggleDrive() { driveToken ? disconnectDrive() : connectDrive(); }
 
 function connectDrive() {
   const client = google.accounts.oauth2.initTokenClient({
-    client_id: CLIENT_ID,
-    scope: SCOPES,
+    client_id: CLIENT_ID, scope: SCOPES,
     callback: async (response) => {
       if (response.error) { showToast('❌ Erro ao conectar Drive'); return; }
       driveToken = response.access_token;
@@ -573,40 +552,30 @@ function connectDrive() {
 function disconnectDrive() {
   if (!confirm('Desconectar o Google Drive?')) return;
   driveToken = null; driveFileId = null;
-  localStorage.removeItem('drive_token');
-  localStorage.removeItem('drive_file_id');
-  updateDriveUI(false);
-  showToast('Drive desconectado');
+  localStorage.removeItem('drive_token'); localStorage.removeItem('drive_file_id');
+  updateDriveUI(false); showToast('Drive desconectado');
 }
 
 function updateDriveUI(connected) {
   const dot = document.getElementById('drive-dot');
   const text = document.getElementById('drive-status-text');
   const btn = document.getElementById('btn-drive-action');
-  if (connected) {
-    dot.className = 'drive-dot connected';
-    text.textContent = 'Google Drive conectado';
-    btn.textContent = 'DESCONECTAR';
-  } else {
-    dot.className = 'drive-dot';
-    text.textContent = 'Google Drive desconectado';
-    btn.textContent = 'CONECTAR';
-  }
+  dot.className = 'drive-dot' + (connected ? ' connected' : '');
+  text.textContent = connected ? 'Google Drive conectado' : 'Google Drive desconectado';
+  btn.textContent = connected ? 'DESCONECTAR' : 'CONECTAR';
 }
 
 function setDriveSyncing(on) {
   const dot = document.getElementById('drive-dot');
-  if (on) dot.className = 'drive-dot syncing';
-  else if (driveToken) dot.className = 'drive-dot connected';
+  dot.className = 'drive-dot ' + (on ? 'syncing' : (driveToken ? 'connected' : ''));
 }
 
 async function loadFromDrive() {
   if (!driveToken) return;
   try {
     setDriveSyncing(true);
-    // Busca o arquivo
     const search = await fetch(
-      `https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=name='${DRIVE_FILE_NAME}'&fields=files(id,name)`,
+      `https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=name='${DRIVE_FILE_NAME}'&fields=files(id)`,
       { headers: { Authorization: `Bearer ${driveToken}` } }
     );
     const result = await search.json();
@@ -621,8 +590,7 @@ async function loadFromDrive() {
       if (imported.groups && imported.workouts) {
         data = imported;
         localStorage.setItem('treino_v3', JSON.stringify(data));
-        renderGroups();
-        showToast('✓ Dados carregados do Drive!');
+        renderGroups(); showToast('✓ Dados carregados do Drive!');
       }
     }
   } catch(e) { showToast('Erro ao carregar Drive'); }
@@ -640,28 +608,20 @@ async function saveToDrive() {
     setDriveSyncing(true);
     const body = JSON.stringify(data);
     const fileId = driveFileId || localStorage.getItem('drive_file_id');
-    let res;
     if (fileId) {
-      res = await fetch(
-        `https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`,
-        { method: 'PATCH', headers: { Authorization: `Bearer ${driveToken}`, 'Content-Type': 'application/json' }, body }
-      );
+      await fetch(`https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`,
+        { method: 'PATCH', headers: { Authorization: `Bearer ${driveToken}`, 'Content-Type': 'application/json' }, body });
     } else {
-      // Cria o arquivo no appDataFolder
-      const meta = await fetch(
-        'https://www.googleapis.com/drive/v3/files',
+      const meta = await fetch('https://www.googleapis.com/drive/v3/files',
         { method: 'POST', headers: { Authorization: `Bearer ${driveToken}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: DRIVE_FILE_NAME, parents: ['appDataFolder'] }) }
-      );
+          body: JSON.stringify({ name: DRIVE_FILE_NAME, parents: ['appDataFolder'] }) });
       const metaJson = await meta.json();
       driveFileId = metaJson.id;
       localStorage.setItem('drive_file_id', driveFileId);
-      res = await fetch(
-        `https://www.googleapis.com/upload/drive/v3/files/${driveFileId}?uploadType=media`,
-        { method: 'PATCH', headers: { Authorization: `Bearer ${driveToken}`, 'Content-Type': 'application/json' }, body }
-      );
+      await fetch(`https://www.googleapis.com/upload/drive/v3/files/${driveFileId}?uploadType=media`,
+        { method: 'PATCH', headers: { Authorization: `Bearer ${driveToken}`, 'Content-Type': 'application/json' }, body });
     }
-    if (res.ok) showToast('☁️ Salvo no Drive');
+    showToast('☁️ Salvo no Drive');
   } catch(e) { showToast('Erro ao salvar no Drive'); }
   finally { setDriveSyncing(false); }
 }
@@ -670,8 +630,7 @@ async function saveToDrive() {
 function saveActiveState() {
   if (!activeWorkout) return;
   localStorage.setItem('treino_active', JSON.stringify({
-    workoutId: activeWorkout.id, currentExIdx, currentSerie,
-    cronoSeconds, isResting, restRemaining
+    workoutId: activeWorkout.id, currentExIdx, currentSerie, cronoSeconds, isResting, restRemaining
   }));
 }
 function clearActiveState() { localStorage.removeItem('treino_active'); }
@@ -693,20 +652,15 @@ function checkResume() {
 
 function resumeWorkout() {
   const banner = document.getElementById('resume-banner');
-  const s = banner._state;
-  if (!s) return;
-  const w = data.workouts.find(x => x.id === s.workoutId);
-  if (!w) return;
+  const s = banner._state; if (!s) return;
+  const w = data.workouts.find(x => x.id === s.workoutId); if (!w) return;
   banner.classList.remove('show');
-  activeWorkout = w; currentExIdx = s.currentExIdx; currentSerie = s.currentSerie;
-  cronoSeconds = s.cronoSeconds || 0;
+  activeWorkout = w; currentExIdx = s.currentExIdx; currentSerie = s.currentSerie; cronoSeconds = s.cronoSeconds || 0;
   if (!audioCtx) { try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {} }
-  requestWakeLock();
-  updateCronoDisplay();
+  requestWakeLock(); updateCronoDisplay();
   cronoInterval = setInterval(() => { cronoSeconds++; updateCronoDisplay(); saveActiveState(); }, 1000);
   document.getElementById('active-workout-label').textContent = activeWorkout.name.toUpperCase();
-  renderActiveExercise();
-  show('active-screen');
+  renderActiveExercise(); show('active-screen');
 }
 
 // ── GROUPS ──
@@ -741,8 +695,7 @@ function openNewGroup() {
 }
 
 function editGroup(id) {
-  const g = data.groups.find(x => x.id === id);
-  if (!g) return;
+  const g = data.groups.find(x => x.id === id); if (!g) return;
   editingGroupId = id;
   document.getElementById('edit-group-title').textContent = 'EDITAR GRUPO';
   document.getElementById('grp-icon').value = g.icon || '';
@@ -805,8 +758,7 @@ function openNewWorkout() {
 }
 
 function editWorkout(id) {
-  const w = data.workouts.find(x => x.id === id);
-  if (!w) return;
+  const w = data.workouts.find(x => x.id === id); if (!w) return;
   editingWorkoutId = id;
   document.getElementById('edit-workout-title').textContent = 'EDITAR TREINO';
   document.getElementById('wk-name').value = w.name;
@@ -838,14 +790,12 @@ function deleteWorkout(id) {
 
 // ── ACTIVE WORKOUT ──
 function startWorkout(id) {
-  activeWorkout = data.workouts.find(w => w.id === id);
-  if (!activeWorkout) return;
+  activeWorkout = data.workouts.find(w => w.id === id); if (!activeWorkout) return;
   currentExIdx = 0; currentSerie = 0;
   if (!audioCtx) { try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {} }
   requestWakeLock(); startCrono();
   document.getElementById('active-workout-label').textContent = activeWorkout.name.toUpperCase();
-  renderActiveExercise(); saveActiveState();
-  show('active-screen');
+  renderActiveExercise(); saveActiveState(); show('active-screen');
 }
 
 function renderActiveExercise() {
@@ -873,17 +823,18 @@ function doneSerie() {
   currentSerie++;
   renderActiveExercise();
   if (currentSerie >= ex.series) {
+    // Todas as séries deste exercício concluídas
     document.getElementById('btn-done-serie').disabled = true;
     const isLast = currentExIdx + 1 >= ex.exercises;
     if (isLast) {
-      // Último exercício: descanso normal e termina
-      startRest(ex.rest, () => finishWorkout());
+      // Último exercício: termina o treino direto
+      finishWorkout();
     } else {
-      // Fim das séries: descanso e depois mostra próximo exercício
-      startRest(ex.rest, () => showNextExercise(currentExIdx + 2));
+      // Mostra tela "Próximo exercício" sem descanso
+      showNextExercise(currentExIdx + 2);
     }
   } else {
-    // Entre séries: descanso normal
+    // Entre séries do mesmo exercício: descanso normal
     startRest(ex.rest, () => renderActiveExercise());
   }
 }
@@ -891,9 +842,7 @@ function doneSerie() {
 function showNextExercise(nextNum) {
   document.getElementById('next-ex-number').textContent = nextNum;
   document.getElementById('next-ex-overlay').classList.add('show');
-  nextExCallback = () => {
-    currentExIdx++; currentSerie = 0; renderActiveExercise();
-  };
+  nextExCallback = () => { currentExIdx++; currentSerie = 0; renderActiveExercise(); };
 }
 
 function confirmNextEx() {
@@ -905,14 +854,13 @@ function clearNextEx() { nextExCallback = null; }
 
 function skipToNext() {
   clearRest(); clearNextEx();
-  document.getElementById('rest-overlay').classList.remove('show');
-  document.getElementById('next-ex-overlay').classList.remove('show');
+  ['rest-overlay','next-ex-overlay'].forEach(id => document.getElementById(id).classList.remove('show'));
   currentExIdx++; currentSerie = 0;
   if (currentExIdx >= activeWorkout.exercises) { finishWorkout(); return; }
   renderActiveExercise();
 }
 
-// ── REST ──
+// ── REST (só entre séries) ──
 function startRest(seconds, cb) {
   clearRest(); restCallback = cb; isResting = true;
   if (seconds <= 0) { isResting = false; cb(); return; }
@@ -923,9 +871,8 @@ function startRest(seconds, cb) {
   countdown.textContent = rem; countdown.classList.remove('tick');
   restInterval = setInterval(() => {
     rem--; restRemaining = rem; countdown.textContent = rem;
-    if (rem > 0 && rem <= 3) {
-      countdown.classList.add('tick'); playTickBeep(); vibrate(60);
-    } else { countdown.classList.remove('tick'); }
+    if (rem > 0 && rem <= 3) { countdown.classList.add('tick'); playTickBeep(); vibrate(60); }
+    else countdown.classList.remove('tick');
     saveActiveState();
     if (rem <= 0) { clearRest(); overlay.classList.remove('show'); countdown.classList.remove('tick'); alertEnd(); cb(); }
   }, 1000);
@@ -948,8 +895,7 @@ function clearRest() {
 // ── FINISH ──
 function finishWorkout() {
   clearRest(); clearNextEx(); stopCrono(); releaseWakeLock(); clearActiveState();
-  document.getElementById('rest-overlay').classList.remove('show');
-  document.getElementById('next-ex-overlay').classList.remove('show');
+  ['rest-overlay','next-ex-overlay'].forEach(id => document.getElementById(id).classList.remove('show'));
   const total = activeWorkout.exercises * activeWorkout.series;
   document.getElementById('finish-stats').textContent =
     `${activeWorkout.exercises} exercícios · ${total} séries\nTempo total: ${formatCrono(cronoSeconds)}`;
@@ -960,8 +906,7 @@ function finishWorkout() {
 function confirmStop() {
   if (confirm('Encerrar o treino agora?')) {
     clearRest(); clearNextEx(); stopCrono(); releaseWakeLock(); clearActiveState();
-    document.getElementById('rest-overlay').classList.remove('show');
-    document.getElementById('next-ex-overlay').classList.remove('show');
+    ['rest-overlay','next-ex-overlay'].forEach(id => document.getElementById(id).classList.remove('show'));
     goHome();
   }
 }
@@ -990,8 +935,7 @@ function importJSON(event) {
         imported.groups.forEach(g => { if (!egIds.has(g.id)) data.groups.push(g); });
         imported.workouts.forEach(w => { if (!ewIds.has(w.id)) data.workouts.push(w); });
       } else { data = imported; }
-      persist(); renderGroups(); show('home-screen');
-      showToast('✓ Importado!');
+      persist(); renderGroups(); show('home-screen'); showToast('✓ Importado!');
     } catch { showToast('❌ Arquivo inválido'); }
     event.target.value = '';
   };
@@ -1010,8 +954,6 @@ function showToast(msg) {
 // ── INIT ──
 renderGroups();
 checkResume();
-
-// Tenta restaurar token do Drive
 const savedToken = localStorage.getItem('drive_token');
 if (savedToken) { driveToken = savedToken; driveFileId = localStorage.getItem('drive_file_id'); updateDriveUI(true); loadFromDrive(); }
 </script>
