@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TREINO">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='80' fill='%230a0a0f'/%3E%3Cellipse cx='256' cy='256' rx='120' ry='36' fill='none' stroke='%23c8f542' stroke-width='28' stroke-linecap='round'/%3E%3Crect x='136' y='220' width='240' height='72' rx='18' fill='%23c8f542'/%3E%3Crect x='60' y='210' width='76' height='92' rx='18' fill='%23c8f542'/%3E%3Crect x='376' y='210' width='76' height='92' rx='18' fill='%23c8f542'/%3E%3Crect x='40' y='230' width='32' height='52' rx='10' fill='%23c8f542'/%3E%3Crect x='440' y='230' width='32' height='52' rx='10' fill='%23c8f542'/%3E%3C/svg%3E">
 <title>TREINO</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -290,6 +296,16 @@
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .section-header .section-label { margin-bottom: 0; }
+  .btn-add-avulso {
+    background: transparent; border: 1px solid var(--accent); color: var(--accent);
+    width: 32px; height: 32px; border-radius: 8px; font-size: 20px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.15s; flex-shrink: 0;
+  }
+  .btn-add-avulso:active { transform: scale(0.9); opacity: 0.7; }
 </style>
 </head>
 <body>
@@ -312,7 +328,15 @@
       <div class="resume-text" id="resume-text">Treino em andamento</div>
       <button class="btn-resume" onclick="resumeWorkout()">RETOMAR</button>
     </div>
-    <div class="section-label">Grupos de treino</div>
+    <div class="section-header">
+      <div class="section-label">Treinos avulsos</div>
+      <button class="btn-add-avulso" onclick="openNewAvulso()">＋</button>
+    </div>
+    <div id="avulso-list"></div>
+    <div class="section-header" style="margin-top:8px">
+      <div class="section-label">Grupos de treino</div>
+      <button class="btn-add-avulso" onclick="openNewGroup()" style="color:var(--accent2);border-color:var(--accent2)">＋</button>
+    </div>
     <div id="group-list"></div>
     <div class="backup-row">
       <button class="btn-backup-tiny" onclick="exportJSON()">⬇ exportar</button>
@@ -386,6 +410,40 @@
     </div>
   </div>
   <div class="save-bar"><button class="btn-save" onclick="saveWorkout()">SALVAR TREINO</button></div>
+</div>
+
+<!-- EDIT TREINO AVULSO -->
+<div id="edit-avulso-screen" class="screen">
+  <div class="topbar">
+    <button class="btn-icon" onclick="show('home-screen')">←</button>
+    <div class="topbar-title" id="edit-avulso-title">NOVO TREINO</div>
+    <div style="width:44px"></div>
+  </div>
+  <div class="scroll-body">
+    <div class="field-group">
+      <label class="field-label">Nome do treino</label>
+      <input id="av-name" class="field-input" type="text" placeholder="Ex: Treino Livre" maxlength="50">
+    </div>
+    <hr class="divider">
+    <div class="field-group">
+      <label class="field-label">Configuração</label>
+      <div class="three-col">
+        <div class="num-block">
+          <span class="field-label" style="text-align:center">Exercícios</span>
+          <input id="av-exercises" class="num-input" type="number" min="1" max="30" placeholder="6">
+        </div>
+        <div class="num-block">
+          <span class="field-label" style="text-align:center">Séries</span>
+          <input id="av-series" class="num-input" type="number" min="1" max="20" placeholder="3">
+        </div>
+        <div class="num-block">
+          <span class="field-label" style="text-align:center">Desc (s)</span>
+          <input id="av-rest" class="num-input" type="number" min="0" max="600" placeholder="60">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="save-bar"><button class="btn-save" onclick="saveAvulso()">SALVAR TREINO</button></div>
 </div>
 
 <!-- ACTIVE -->
@@ -663,8 +721,72 @@ function resumeWorkout() {
   renderActiveExercise(); show('active-screen');
 }
 
-// ── GROUPS ──
+let editingAvulsoId = null;
+
+// ── AVULSOS ──
+function renderAvulsos() {
+  const list = document.getElementById('avulso-list');
+  const avulsos = data.workouts.filter(w => !w.groupId);
+  if (avulsos.length === 0) {
+    list.innerHTML = `<div style="font-family:'Space Mono',monospace;font-size:12px;color:var(--border);padding:4px 0 16px;text-align:center">nenhum treino avulso</div>`;
+    return;
+  }
+  list.innerHTML = avulsos.map(w => `
+    <div class="card">
+      <div class="card-header">
+        <div class="card-tag">${esc(w.name)}</div>
+        <div class="card-actions">
+          <button class="btn-sm" onclick="editAvulso('${w.id}')">✏️</button>
+          <button class="btn-sm" onclick="deleteAvulso('${w.id}')">🗑️</button>
+        </div>
+      </div>
+      <div class="card-meta">${w.exercises} exercícios · ${w.series} séries · ${w.rest}s descanso</div>
+      <button class="btn-start" onclick="startWorkout('${w.id}')">▶ INICIAR TREINO</button>
+    </div>`).join('');
+}
+
+function openNewAvulso() {
+  editingAvulsoId = null;
+  document.getElementById('edit-avulso-title').textContent = 'NOVO TREINO';
+  ['av-name','av-exercises','av-series','av-rest'].forEach(id => document.getElementById(id).value = '');
+  show('edit-avulso-screen');
+}
+
+function editAvulso(id) {
+  const w = data.workouts.find(x => x.id === id); if (!w) return;
+  editingAvulsoId = id;
+  document.getElementById('edit-avulso-title').textContent = 'EDITAR TREINO';
+  document.getElementById('av-name').value = w.name;
+  document.getElementById('av-exercises').value = w.exercises;
+  document.getElementById('av-series').value = w.series;
+  document.getElementById('av-rest').value = w.rest;
+  show('edit-avulso-screen');
+}
+
+function saveAvulso() {
+  const name = document.getElementById('av-name').value.trim();
+  const exercises = parseInt(document.getElementById('av-exercises').value);
+  const series = parseInt(document.getElementById('av-series').value);
+  const rest = parseInt(document.getElementById('av-rest').value);
+  if (!name) { alert('Dá um nome pro treino!'); return; }
+  if (!exercises || exercises < 1) { alert('Informe a quantidade de exercícios!'); return; }
+  if (!series || series < 1) { alert('Informe o número de séries!'); return; }
+  if (isNaN(rest)) { alert('Informe o tempo de descanso!'); return; }
+  if (editingAvulsoId) {
+    Object.assign(data.workouts.find(x => x.id === editingAvulsoId), { name, exercises, series, rest });
+  } else {
+    data.workouts.push({ id: Date.now().toString(), groupId: null, name, exercises, series, rest });
+  }
+  persist(); renderGroups(); show('home-screen');
+}
+
+function deleteAvulso(id) {
+  if (!confirm('Excluir este treino?')) return;
+  data.workouts = data.workouts.filter(w => w.id !== id);
+  persist(); renderGroups();
+}
 function renderGroups() {
+  renderAvulsos();
   const list = document.getElementById('group-list');
   if (data.groups.length === 0) {
     list.innerHTML = `<div class="empty-state"><div class="icon">🏋️</div><p>Nenhum grupo criado ainda.<br>Toque em 🏋️ para criar seu primeiro grupo.</p></div>`;
