@@ -260,6 +260,13 @@
   }
   .btn-skip-rest:active { border-color: var(--danger); color: var(--danger); }
 
+  .btn-back-rest {
+    background: transparent; border: 1px solid rgba(245,66,66,0.3); color: var(--danger);
+    padding: 10px 28px; border-radius: 12px; font-family: 'Space Mono', monospace;
+    font-size: 12px; letter-spacing: 2px; cursor: pointer; margin-top: 4px; opacity: 0.7;
+  }
+  .btn-back-rest:active { opacity: 1; border-color: var(--danger); }
+
   /* RESUME */
   .resume-banner {
     background: var(--surface2); border: 1px solid var(--accent2); border-radius: 14px;
@@ -495,6 +502,7 @@
   <div class="rest-timer-big" id="rest-countdown">60</div>
   <div class="rest-sub">PRÓXIMA SÉRIE EM BREVE</div>
   <button class="btn-skip-rest" onclick="confirmSkipRest()">PULAR DESCANSO</button>
+  <button class="btn-back-rest" onclick="backFromRest()">← DESFAZER SÉRIE</button>
 </div>
 
 <!-- FINISH -->
@@ -595,33 +603,18 @@ function formatCrono(sec) {
 function toggleDrive() { driveToken ? disconnectDrive() : connectDrive(); }
 
 function connectDrive() {
-  const authUrl = 'https://accounts.google.com/o/oauth2/v2/auth?' + new URLSearchParams({
-    client_id: CLIENT_ID,
-    redirect_uri: 'https://renataraphaelabarros-a11y.github.io/Treino/',
-    response_type: 'token',
-    scope: SCOPES,
-    include_granted_scopes: 'true',
-    state: 'drive_auth'
-  });
-  window.location.href = authUrl;
-}
-
-function handleOAuthRedirect() {
-  try {
-    const hash = window.location.hash;
-    if (!hash || hash.indexOf('access_token') === -1) return;
-    const params = new URLSearchParams(hash.replace('#', ''));
-    const token = params.get('access_token');
-    const state = params.get('state');
-    if (token && state === 'drive_auth') {
-      driveToken = token;
+  const client = google.accounts.oauth2.initTokenClient({
+    client_id: CLIENT_ID, scope: SCOPES,
+    callback: async (response) => {
+      if (response.error) { showToast('❌ Erro ao conectar Drive'); return; }
+      driveToken = response.access_token;
       localStorage.setItem('drive_token', driveToken);
-      history.replaceState(null, '', window.location.pathname);
       updateDriveUI(true);
       showToast('✓ Drive conectado!');
-      loadFromDrive();
+      await loadFromDrive();
     }
-  } catch(e) {}
+  });
+  client.requestAccessToken();
 }
 
 function disconnectDrive() {
@@ -1019,6 +1012,14 @@ function startRest(seconds, cb) {
 
 function confirmSkipRest() { if (confirm('Pular o descanso?')) skipRest(); }
 
+function backFromRest() {
+  clearRest();
+  document.getElementById('rest-overlay').classList.remove('show');
+  document.getElementById('rest-countdown').classList.remove('tick');
+  currentSerie = Math.max(0, currentSerie - 1);
+  renderActiveExercise();
+}
+
 function skipRest() {
   const cb = restCallback; clearRest();
   document.getElementById('rest-overlay').classList.remove('show');
@@ -1093,7 +1094,6 @@ function showToast(msg) {
 // ── INIT ──
 renderGroups();
 checkResume();
-handleOAuthRedirect();
 const savedToken = localStorage.getItem('drive_token');
 if (savedToken) { driveToken = savedToken; driveFileId = localStorage.getItem('drive_file_id'); updateDriveUI(true); loadFromDrive(); }
 </script>
