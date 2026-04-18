@@ -741,11 +741,13 @@ function renderAvulsos() {
     list.innerHTML = `<div style="font-family:'Space Mono',monospace;font-size:12px;color:var(--border);padding:4px 0 16px;text-align:center">nenhum treino avulso</div>`;
     return;
   }
-  list.innerHTML = avulsos.map(w => `
+  list.innerHTML = avulsos.map((w, idx) => `
     <div class="card">
       <div class="card-header">
         <div class="card-tag">${esc(w.name)}</div>
         <div class="card-actions">
+          <button class="btn-sm" onclick="moveAvulso('${w.id}',-1)" ${idx === 0 ? 'style="opacity:0.2;pointer-events:none"' : ''}>▲</button>
+          <button class="btn-sm" onclick="moveAvulso('${w.id}',1)" ${idx === avulsos.length-1 ? 'style="opacity:0.2;pointer-events:none"' : ''}>▼</button>
           <button class="btn-sm" onclick="editAvulso('${w.id}')">✏️</button>
           <button class="btn-sm" onclick="deleteAvulso('${w.id}')">🗑️</button>
         </div>
@@ -788,6 +790,18 @@ function saveAvulso() {
     data.workouts.push({ id: Date.now().toString(), groupId: null, name, exercises, series, rest });
   }
   persist(); renderGroups(); show('home-screen');
+}
+
+function moveAvulso(id, dir) {
+  const avulsos = data.workouts.filter(w => !w.groupId);
+  const idx = avulsos.findIndex(w => w.id === id);
+  const newIdx = idx + dir;
+  if (newIdx < 0 || newIdx >= avulsos.length) return;
+  // Trocar no array principal mantendo posição relativa dos de grupo
+  const allIdx = data.workouts.findIndex(w => w.id === avulsos[idx].id);
+  const allNewIdx = data.workouts.findIndex(w => w.id === avulsos[newIdx].id);
+  [data.workouts[allIdx], data.workouts[allNewIdx]] = [data.workouts[allNewIdx], data.workouts[allIdx]];
+  persist(); renderAvulsos();
 }
 
 function deleteAvulso(id) {
@@ -967,6 +981,7 @@ function doneSerie() {
     }
   } else {
     // Entre séries do mesmo exercício: descanso normal
+    document.getElementById('rest-sub').textContent = `INDO PARA SÉRIE ${currentSerie + 1} / ${ex.series}`;
     startRest(ex.rest, () => renderActiveExercise());
   }
 }
@@ -1090,6 +1105,11 @@ function showToast(msg) {
   if (toastTimer) clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
 }
+
+// ── WAKE LOCK PERSISTENTE ──
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && activeWorkout) requestWakeLock();
+});
 
 // ── INIT ──
 renderGroups();
