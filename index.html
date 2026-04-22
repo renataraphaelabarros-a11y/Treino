@@ -565,11 +565,10 @@ function editWorkout(id) {
 }
 
 function saveWorkout() {
-  const name = document.getElementById('wk-name').value.trim();
+  const name = document.getElementById('wk-name').value.trim() || `Treino ${data.workouts.length + 1}`;
   const exercises = parseInt(document.getElementById('wk-exercises').value);
   const series = parseInt(document.getElementById('wk-series').value);
   const rest = parseInt(document.getElementById('wk-rest').value);
-  if (!name) { alert('Dá um nome pro treino!'); return; }
   if (!exercises || exercises < 1) { alert('Informe a quantidade de exercícios!'); return; }
   if (!series || series < 1) { alert('Informe o número de séries!'); return; }
   if (isNaN(rest)) { alert('Informe o tempo de descanso!'); return; }
