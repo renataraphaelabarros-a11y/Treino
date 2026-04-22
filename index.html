@@ -11,10 +11,8 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" type="image/png" href="icon.png">
-
 <title>TREINO</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
   :root {
     --bg: #0a0a0f;
@@ -60,47 +58,20 @@
   }
   .btn-icon:active { transform: scale(0.92); background: var(--surface2); }
 
-  /* DRIVE BAR */
-  .drive-bar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 12px 20px; border-bottom: 1px solid var(--border);
-    background: var(--surface);
-  }
-  .drive-status { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
-  .drive-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
-  .drive-dot.connected { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
-  .drive-dot.syncing { background: var(--accent2); animation: blink 1s infinite; }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-  .btn-drive-connect {
-    background: transparent; border: 1px solid var(--border); color: var(--muted);
-    padding: 7px 14px; border-radius: 8px; font-family: 'Space Mono', monospace;
-    font-size: 11px; letter-spacing: 1px; cursor: pointer; transition: all 0.2s;
-  }
-  .btn-drive-connect:active { border-color: var(--accent2); color: var(--accent2); }
-
   /* SCROLL */
   .scroll-body { flex: 1; padding: 20px; overflow-y: auto; padding-bottom: 90px; }
-
-  .section-label {
-    font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 3px;
-    color: var(--muted); text-transform: uppercase; margin-bottom: 16px;
-  }
 
   /* CARDS */
   .card {
     background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
     padding: 20px; margin-bottom: 14px; position: relative; overflow: hidden;
-    cursor: pointer; transition: border-color 0.2s;
+    transition: border-color 0.2s;
   }
   .card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); border-radius: 4px 0 0 4px; }
-  .card.group-card::before { background: var(--accent2); }
   .card:active { border-color: var(--accent); }
-  .card.group-card:active { border-color: var(--accent2); }
 
   .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-  .card-tag { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 2px; color: var(--accent); line-height: 1; display: flex; align-items: center; gap: 8px; }
-  .card.group-card .card-tag { color: var(--accent2); font-size: 24px; }
-  .card-icon { font-size: 28px; line-height: 1; }
+  .card-tag { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 2px; color: var(--accent); line-height: 1; }
   .card-actions { display: flex; gap: 8px; }
 
   .btn-sm {
@@ -118,30 +89,19 @@
   }
   .btn-start:active { transform: scale(0.97); opacity: 0.85; }
 
-  .empty-state { text-align: center; padding: 50px 20px; color: var(--muted); }
-  .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+  .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
+  .empty-state .icon { font-size: 56px; margin-bottom: 16px; }
   .empty-state p { font-size: 15px; line-height: 1.8; }
 
   .fab {
     position: fixed; bottom: 24px; right: 20px;
     background: var(--accent); color: #0a0a0f; width: 56px; height: 56px;
-    border-radius: 16px; border: none; font-size: 26px;
+    border-radius: 16px; border: none; font-size: 28px;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer; box-shadow: 0 8px 28px rgba(200,245,66,0.35);
     transition: all 0.15s; z-index: 100;
   }
   .fab:active { transform: scale(0.9); }
-
-  /* BACKUP discreto */
-  .backup-row {
-    display: flex; gap: 8px; justify-content: center; padding: 10px 20px 0;
-  }
-  .btn-backup-tiny {
-    background: transparent; border: none; color: var(--border);
-    font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1px;
-    cursor: pointer; padding: 4px 8px; transition: color 0.2s;
-  }
-  .btn-backup-tiny:active { color: var(--muted); }
 
   /* FORM */
   .field-group { margin-bottom: 20px; }
@@ -156,7 +116,6 @@
   }
   .field-input:focus { border-color: var(--accent); }
   .field-input::placeholder { color: var(--muted); }
-  .emoji-input { font-size: 34px; text-align: center; padding: 12px; letter-spacing: 0; }
 
   .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
   .num-block { display: flex; flex-direction: column; gap: 8px; }
@@ -176,6 +135,8 @@
     font-size: 24px; letter-spacing: 3px; cursor: pointer;
   }
   .btn-save:active { transform: scale(0.97); opacity: 0.85; }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
   /* ACTIVE */
   .active-topbar { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 14px; border-bottom: 1px solid var(--border); }
@@ -259,7 +220,6 @@
     font-size: 13px; letter-spacing: 2px; cursor: pointer; margin-top: 4px;
   }
   .btn-skip-rest:active { border-color: var(--danger); color: var(--danger); }
-
   .btn-back-rest {
     background: transparent; border: 1px solid rgba(245,66,66,0.3); color: var(--danger);
     padding: 10px 28px; border-radius: 12px; font-family: 'Space Mono', monospace;
@@ -305,17 +265,17 @@
     pointer-events: none; white-space: nowrap; z-index: 500;
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
-  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-  .section-header .section-label { margin-bottom: 0; }
-  .btn-add-avulso {
-    background: transparent; border: 1px solid var(--accent); color: var(--accent);
-    width: 32px; height: 32px; border-radius: 8px; font-size: 20px; line-height: 1;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; transition: all 0.15s; flex-shrink: 0;
+  /* BACKUP discreto */
+  .backup-row {
+    display: flex; gap: 8px; justify-content: center; padding: 10px 20px 0;
   }
-  .btn-add-avulso:active { transform: scale(0.9); opacity: 0.7; }
+  .btn-backup-tiny {
+    background: transparent; border: none; color: var(--border);
+    font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1px;
+    cursor: pointer; padding: 4px 8px; transition: color 0.2s;
+  }
+  .btn-backup-tiny:active { color: var(--muted); }
 </style>
 </head>
 <body>
@@ -325,28 +285,12 @@
   <div class="topbar">
     <div class="logo">TREINO<span>.</span></div>
   </div>
-  <div class="drive-bar">
-    <div class="drive-status">
-      <div class="drive-dot" id="drive-dot"></div>
-      <span id="drive-status-text">Google Drive desconectado</span>
-    </div>
-    <button class="btn-drive-connect" id="btn-drive-action" onclick="toggleDrive()">CONECTAR</button>
-  </div>
   <div class="scroll-body">
     <div id="resume-banner" class="resume-banner">
       <div class="resume-text" id="resume-text">Treino em andamento</div>
       <button class="btn-resume" onclick="resumeWorkout()">RETOMAR</button>
     </div>
-    <div class="section-header">
-      <div class="section-label">Treinos avulsos</div>
-      <button class="btn-add-avulso" onclick="openNewAvulso()">＋</button>
-    </div>
-    <div id="avulso-list"></div>
-    <div class="section-header" style="margin-top:8px">
-      <div class="section-label">Grupos de treino</div>
-      <button class="btn-add-avulso" onclick="openNewGroup()" style="color:var(--accent2);border-color:var(--accent2)">＋</button>
-    </div>
-    <div id="group-list"></div>
+    <div id="workout-list"></div>
     <div class="backup-row">
       <button class="btn-backup-tiny" onclick="exportJSON()">⬇ exportar</button>
       <span style="color:var(--border);font-size:11px">·</span>
@@ -354,50 +298,20 @@
       <input type="file" id="import-input" accept=".json" style="display:none" onchange="importJSON(event)">
     </div>
   </div>
-</div>
-
-<!-- GRUPO -->
-<div id="group-screen" class="screen">
-  <div class="topbar">
-    <button class="btn-icon" onclick="show('home-screen')">←</button>
-    <div class="topbar-title" id="group-screen-title">GRUPO</div>
-    <div style="width:44px"></div>
-  </div>
-  <div class="scroll-body"><div id="workout-list"></div></div>
-  <button class="fab" onclick="openNewWorkout()">＋</button>
-</div>
-
-<!-- EDIT GRUPO -->
-<div id="edit-group-screen" class="screen">
-  <div class="topbar">
-    <button class="btn-icon" onclick="show('home-screen')">←</button>
-    <div class="topbar-title" id="edit-group-title">NOVO GRUPO</div>
-    <div style="width:44px"></div>
-  </div>
-  <div class="scroll-body">
-    <div class="field-group">
-      <label class="field-label">Ícone (emoji)</label>
-      <input id="grp-icon" class="field-input emoji-input" type="text" placeholder="🏋️" maxlength="4">
-    </div>
-    <div class="field-group">
-      <label class="field-label">Nome do grupo</label>
-      <input id="grp-name" class="field-input" type="text" placeholder="Ex: Hipertrofia Janeiro" maxlength="50">
-    </div>
-  </div>
-  <div class="save-bar"><button class="btn-save" onclick="saveGroup()">SALVAR GRUPO</button></div>
+  <button class="fab" onclick="openNew()">＋</button>
 </div>
 
 <!-- EDIT TREINO -->
-<div id="edit-workout-screen" class="screen">
+<div id="edit-screen" class="screen">
   <div class="topbar">
-    <button class="btn-icon" onclick="show('group-screen')">←</button>
-    <div class="topbar-title" id="edit-workout-title">NOVO TREINO</div>
+    <button class="btn-icon" onclick="show('home-screen')">←</button>
+    <div class="topbar-title" id="edit-title">NOVO TREINO</div>
     <div style="width:44px"></div>
   </div>
   <div class="scroll-body">
     <div class="field-group">
       <label class="field-label">Nome do treino</label>
-      <input id="wk-name" class="field-input" type="text" placeholder="Ex: Treino A" maxlength="50">
+      <input id="wk-name" class="field-input" type="text" placeholder="Ex: Treino A" maxlength="50" autocomplete="off">
     </div>
     <hr class="divider">
     <div class="field-group">
@@ -418,41 +332,7 @@
       </div>
     </div>
   </div>
-  <div class="save-bar"><button class="btn-save" onclick="saveWorkout()">SALVAR TREINO</button></div>
-</div>
-
-<!-- EDIT TREINO AVULSO -->
-<div id="edit-avulso-screen" class="screen">
-  <div class="topbar">
-    <button class="btn-icon" onclick="show('home-screen')">←</button>
-    <div class="topbar-title" id="edit-avulso-title">NOVO TREINO</div>
-    <div style="width:44px"></div>
-  </div>
-  <div class="scroll-body">
-    <div class="field-group">
-      <label class="field-label">Nome do treino</label>
-      <input id="av-name" class="field-input" type="text" placeholder="Ex: Treino Livre" maxlength="50">
-    </div>
-    <hr class="divider">
-    <div class="field-group">
-      <label class="field-label">Configuração</label>
-      <div class="three-col">
-        <div class="num-block">
-          <span class="field-label" style="text-align:center">Exercícios</span>
-          <input id="av-exercises" class="num-input" type="number" min="1" max="30" placeholder="6">
-        </div>
-        <div class="num-block">
-          <span class="field-label" style="text-align:center">Séries</span>
-          <input id="av-series" class="num-input" type="number" min="1" max="20" placeholder="3">
-        </div>
-        <div class="num-block">
-          <span class="field-label" style="text-align:center">Desc (s)</span>
-          <input id="av-rest" class="num-input" type="number" min="0" max="600" placeholder="60">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="save-bar"><button class="btn-save" onclick="saveAvulso()">SALVAR TREINO</button></div>
+  <div class="save-bar"><button class="btn-save" onclick="saveWorkout()">SALVAR</button></div>
 </div>
 
 <!-- ACTIVE -->
@@ -516,14 +396,22 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const CLIENT_ID = '872104274431-4k5603k842orhjkktu1h0db0bk6n55og.apps.googleusercontent.com';
-const SCOPES = 'https://www.googleapis.com/auth/drive.appdata';
-const DRIVE_FILE_NAME = 'treino-data.json';
+// ── DATA ──
+let raw = localStorage.getItem('treino_v4');
+if (!raw) {
+  // migrar dados antigos se existirem
+  const old = localStorage.getItem('treino_v3');
+  if (old) {
+    try {
+      const parsed = JSON.parse(old);
+      const migrated = { workouts: (parsed.workouts || []).filter(w => !w.groupId).map(w => ({ id: w.id, name: w.name, exercises: w.exercises, series: w.series, rest: w.rest })) };
+      raw = JSON.stringify(migrated);
+    } catch(e) {}
+  }
+}
+let data = JSON.parse(raw || '{"workouts":[]}');
 
-let data = JSON.parse(localStorage.getItem('treino_v3') || '{"groups":[],"workouts":[]}');
-let currentGroupId = null;
-let editingGroupId = null;
-let editingWorkoutId = null;
+let editingId = null;
 let activeWorkout = null;
 let currentExIdx = 0;
 let currentSerie = 0;
@@ -536,9 +424,6 @@ let cronoInterval = null;
 let cronoSeconds = 0;
 let isResting = false;
 let restRemaining = 0;
-let driveToken = null;
-let driveFileId = null;
-let syncTimer = null;
 
 // ── UTILS ──
 function show(id) {
@@ -546,15 +431,12 @@ function show(id) {
   document.getElementById(id).classList.add('active');
 }
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function persist() {
-  localStorage.setItem('treino_v3', JSON.stringify(data));
-  if (driveToken) scheduleDriveSync();
-}
+function persist() { localStorage.setItem('treino_v4', JSON.stringify(data)); }
 
 function goHome() {
   clearRest(); clearNextEx(); stopCrono(); releaseWakeLock();
   ['rest-overlay','next-ex-overlay','finish-overlay'].forEach(id => document.getElementById(id).classList.remove('show'));
-  renderGroups(); show('home-screen');
+  renderWorkouts(); show('home-screen');
 }
 
 // ── SOUND ──
@@ -582,6 +464,10 @@ async function requestWakeLock() {
 }
 function releaseWakeLock() { try { if (wakeLock) { wakeLock.release(); wakeLock = null; } } catch(e) {} }
 
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && activeWorkout) requestWakeLock();
+});
+
 // ── CRONÔMETRO ──
 function startCrono() {
   cronoSeconds = 0; updateCronoDisplay();
@@ -597,113 +483,6 @@ function updateCronoDisplay() {
 function formatCrono(sec) {
   const m = Math.floor(sec/60), s = sec%60;
   return m === 0 ? `${s}s` : s === 0 ? `${m}min` : `${m}min ${s}s`;
-}
-
-// ── GOOGLE DRIVE ──
-function toggleDrive() { driveToken ? disconnectDrive() : connectDrive(); }
-
-function connectDrive() {
-  const client = google.accounts.oauth2.initTokenClient({
-    client_id: CLIENT_ID, scope: SCOPES,
-    callback: async (response) => {
-      if (response.error) { showToast('❌ Erro ao conectar Drive'); return; }
-      driveToken = response.access_token;
-      localStorage.setItem('drive_token', driveToken);
-      updateDriveUI(true);
-      showToast('✓ Drive conectado!');
-      await loadFromDrive();
-    }
-  });
-  client.requestAccessToken();
-}
-
-function disconnectDrive() {
-  if (!confirm('Desconectar o Google Drive?')) return;
-  driveToken = null; driveFileId = null;
-  localStorage.removeItem('drive_token'); localStorage.removeItem('drive_file_id');
-  updateDriveUI(false); showToast('Drive desconectado');
-}
-
-function updateDriveUI(connected) {
-  const dot = document.getElementById('drive-dot');
-  const text = document.getElementById('drive-status-text');
-  const btn = document.getElementById('btn-drive-action');
-  dot.className = 'drive-dot' + (connected ? ' connected' : '');
-  text.textContent = connected ? 'Google Drive conectado' : 'Google Drive desconectado';
-  btn.textContent = connected ? 'DESCONECTAR' : 'CONECTAR';
-}
-
-function setDriveSyncing(on) {
-  const dot = document.getElementById('drive-dot');
-  dot.className = 'drive-dot ' + (on ? 'syncing' : (driveToken ? 'connected' : ''));
-}
-
-function handleDriveAuthError() {
-  driveToken = null; driveFileId = null;
-  localStorage.removeItem('drive_token'); localStorage.removeItem('drive_file_id');
-  updateDriveUI(false);
-  showToast('⚠️ Sessão Drive expirada — reconecte');
-}
-
-async function loadFromDrive() {
-  if (!driveToken) return;
-  try {
-    setDriveSyncing(true);
-    const search = await fetch(
-      `https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=name='${DRIVE_FILE_NAME}'&fields=files(id)`,
-      { headers: { Authorization: `Bearer ${driveToken}` } }
-    );
-    if (search.status === 401) { handleDriveAuthError(); return; }
-    const result = await search.json();
-    if (result.files && result.files.length > 0) {
-      driveFileId = result.files[0].id;
-      localStorage.setItem('drive_file_id', driveFileId);
-      const file = await fetch(
-        `https://www.googleapis.com/drive/v3/files/${driveFileId}?alt=media`,
-        { headers: { Authorization: `Bearer ${driveToken}` } }
-      );
-      if (file.status === 401) { handleDriveAuthError(); return; }
-      const imported = await file.json();
-      if (imported.groups && imported.workouts) {
-        data = imported;
-        localStorage.setItem('treino_v3', JSON.stringify(data));
-        renderGroups(); showToast('✓ Dados carregados do Drive!');
-      }
-    }
-  } catch(e) { showToast('Erro ao carregar Drive'); }
-  finally { setDriveSyncing(false); }
-}
-
-function scheduleDriveSync() {
-  if (syncTimer) clearTimeout(syncTimer);
-  syncTimer = setTimeout(saveToDrive, 2000);
-}
-
-async function saveToDrive() {
-  if (!driveToken) return;
-  try {
-    setDriveSyncing(true);
-    const body = JSON.stringify(data);
-    const fileId = driveFileId || localStorage.getItem('drive_file_id');
-    if (fileId) {
-      const res = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`,
-        { method: 'PATCH', headers: { Authorization: `Bearer ${driveToken}`, 'Content-Type': 'application/json' }, body });
-      if (res.status === 401) { handleDriveAuthError(); return; }
-    } else {
-      const meta = await fetch('https://www.googleapis.com/drive/v3/files',
-        { method: 'POST', headers: { Authorization: `Bearer ${driveToken}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: DRIVE_FILE_NAME, parents: ['appDataFolder'] }) });
-      if (meta.status === 401) { handleDriveAuthError(); return; }
-      const metaJson = await meta.json();
-      driveFileId = metaJson.id;
-      localStorage.setItem('drive_file_id', driveFileId);
-      const res2 = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${driveFileId}?uploadType=media`,
-        { method: 'PATCH', headers: { Authorization: `Bearer ${driveToken}`, 'Content-Type': 'application/json' }, body });
-      if (res2.status === 401) { handleDriveAuthError(); return; }
-    }
-    showToast('☁️ Salvo no Drive');
-  } catch(e) { showToast('Erro ao salvar no Drive'); }
-  finally { setDriveSyncing(false); }
 }
 
 // ── RESUME ──
@@ -743,162 +522,20 @@ function resumeWorkout() {
   renderActiveExercise(); show('active-screen');
 }
 
-let editingAvulsoId = null;
-
-// ── AVULSOS ──
-function renderAvulsos() {
-  const list = document.getElementById('avulso-list');
-  const avulsos = data.workouts.filter(w => !w.groupId);
-  if (avulsos.length === 0) {
-    list.innerHTML = `<div style="font-family:'Space Mono',monospace;font-size:12px;color:var(--border);padding:4px 0 16px;text-align:center">nenhum treino avulso</div>`;
-    return;
-  }
-  list.innerHTML = avulsos.map((w, idx) => `
-    <div class="card">
-      <div class="card-header">
-        <div class="card-tag">${esc(w.name)}</div>
-        <div class="card-actions">
-          <button class="btn-sm" onclick="moveAvulso('${w.id}',-1)" ${idx === 0 ? 'style="opacity:0.2;pointer-events:none"' : ''}>▲</button>
-          <button class="btn-sm" onclick="moveAvulso('${w.id}',1)" ${idx === avulsos.length-1 ? 'style="opacity:0.2;pointer-events:none"' : ''}>▼</button>
-          <button class="btn-sm" onclick="editAvulso('${w.id}')">✏️</button>
-          <button class="btn-sm" onclick="deleteAvulso('${w.id}')">🗑️</button>
-        </div>
-      </div>
-      <div class="card-meta">${w.exercises} exercícios · ${w.series} séries · ${w.rest}s descanso</div>
-      <button class="btn-start" onclick="startWorkout('${w.id}')">▶ INICIAR TREINO</button>
-    </div>`).join('');
-}
-
-function openNewAvulso() {
-  editingAvulsoId = null;
-  document.getElementById('edit-avulso-title').textContent = 'NOVO TREINO';
-  ['av-name','av-exercises','av-series','av-rest'].forEach(id => document.getElementById(id).value = '');
-  show('edit-avulso-screen');
-}
-
-function editAvulso(id) {
-  const w = data.workouts.find(x => x.id === id); if (!w) return;
-  editingAvulsoId = id;
-  document.getElementById('edit-avulso-title').textContent = 'EDITAR TREINO';
-  document.getElementById('av-name').value = w.name;
-  document.getElementById('av-exercises').value = w.exercises;
-  document.getElementById('av-series').value = w.series;
-  document.getElementById('av-rest').value = w.rest;
-  show('edit-avulso-screen');
-}
-
-function saveAvulso() {
-  const name = document.getElementById('av-name').value.trim();
-  const exercises = parseInt(document.getElementById('av-exercises').value);
-  const series = parseInt(document.getElementById('av-series').value);
-  const rest = parseInt(document.getElementById('av-rest').value);
-  if (!name) { alert('Dá um nome pro treino!'); return; }
-  if (!exercises || exercises < 1) { alert('Informe a quantidade de exercícios!'); return; }
-  if (!series || series < 1) { alert('Informe o número de séries!'); return; }
-  if (isNaN(rest)) { alert('Informe o tempo de descanso!'); return; }
-  if (editingAvulsoId) {
-    Object.assign(data.workouts.find(x => x.id === editingAvulsoId), { name, exercises, series, rest });
-  } else {
-    data.workouts.push({ id: Date.now().toString(), groupId: null, name, exercises, series, rest });
-  }
-  persist(); renderGroups(); show('home-screen');
-}
-
-function moveAvulso(id, dir) {
-  const avulsos = data.workouts.filter(w => !w.groupId);
-  const idx = avulsos.findIndex(w => w.id === id);
-  const newIdx = idx + dir;
-  if (newIdx < 0 || newIdx >= avulsos.length) return;
-  // Trocar no array principal mantendo posição relativa dos de grupo
-  const allIdx = data.workouts.findIndex(w => w.id === avulsos[idx].id);
-  const allNewIdx = data.workouts.findIndex(w => w.id === avulsos[newIdx].id);
-  [data.workouts[allIdx], data.workouts[allNewIdx]] = [data.workouts[allNewIdx], data.workouts[allIdx]];
-  persist(); renderAvulsos();
-}
-
-function deleteAvulso(id) {
-  if (!confirm('Excluir este treino?')) return;
-  data.workouts = data.workouts.filter(w => w.id !== id);
-  persist(); renderGroups();
-}
-function renderGroups() {
-  renderAvulsos();
-  const list = document.getElementById('group-list');
-  if (data.groups.length === 0) {
-    list.innerHTML = `<div class="empty-state"><div class="icon">🏋️</div><p>Nenhum grupo criado ainda.<br>Toque em 🏋️ para criar seu primeiro grupo.</p></div>`;
-    return;
-  }
-  list.innerHTML = data.groups.map(g => {
-    const count = data.workouts.filter(w => w.groupId === g.id).length;
-    const icon = g.icon || '🏋️';
-    return `<div class="card group-card" onclick="openGroup('${g.id}')">
-      <div class="card-header">
-        <div class="card-tag"><span class="card-icon">${esc(icon)}</span>${esc(g.name)}</div>
-        <div class="card-actions">
-          <button class="btn-sm" onclick="event.stopPropagation();editGroup('${g.id}')">✏️</button>
-          <button class="btn-sm" onclick="event.stopPropagation();deleteGroup('${g.id}')">🗑️</button>
-        </div>
-      </div>
-      <div class="card-meta">${count} treino${count!==1?'s':''}</div>
-    </div>`;
-  }).join('');
-}
-
-function openNewGroup() {
-  editingGroupId = null;
-  document.getElementById('edit-group-title').textContent = 'NOVO GRUPO';
-  document.getElementById('grp-icon').value = '';
-  document.getElementById('grp-name').value = '';
-  show('edit-group-screen');
-}
-
-function editGroup(id) {
-  const g = data.groups.find(x => x.id === id); if (!g) return;
-  editingGroupId = id;
-  document.getElementById('edit-group-title').textContent = 'EDITAR GRUPO';
-  document.getElementById('grp-icon').value = g.icon || '';
-  document.getElementById('grp-name').value = g.name;
-  show('edit-group-screen');
-}
-
-function saveGroup() {
-  const name = document.getElementById('grp-name').value.trim();
-  const icon = document.getElementById('grp-icon').value.trim() || '🏋️';
-  if (!name) { alert('Dá um nome pro grupo!'); return; }
-  if (editingGroupId) { const g = data.groups.find(x => x.id === editingGroupId); g.name = name; g.icon = icon; }
-  else data.groups.push({ id: Date.now().toString(), name, icon });
-  persist(); renderGroups(); show('home-screen');
-}
-
-function deleteGroup(id) {
-  const count = data.workouts.filter(w => w.groupId === id).length;
-  if (!confirm(count > 0 ? `Este grupo tem ${count} treino(s). Excluir tudo?` : 'Excluir este grupo?')) return;
-  data.groups = data.groups.filter(g => g.id !== id);
-  data.workouts = data.workouts.filter(w => w.groupId !== id);
-  persist(); renderGroups();
-}
-
-// ── WORKOUTS ──
-function openGroup(id) {
-  currentGroupId = id;
-  const g = data.groups.find(x => x.id === id);
-  const icon = g ? (g.icon || '🏋️') : '';
-  document.getElementById('group-screen-title').textContent = g ? `${icon} ${g.name.toUpperCase()}` : 'TREINOS';
-  renderWorkouts(); show('group-screen');
-}
-
+// ── LISTA DE TREINOS ──
 function renderWorkouts() {
   const list = document.getElementById('workout-list');
-  const workouts = data.workouts.filter(w => w.groupId === currentGroupId);
-  if (workouts.length === 0) {
-    list.innerHTML = `<div class="empty-state"><div class="icon">💪</div><p>Nenhum treino ainda.<br>Toque no <strong>+</strong> para adicionar.</p></div>`;
+  if (data.workouts.length === 0) {
+    list.innerHTML = `<div class="empty-state"><div class="icon">🏋️</div><p>Nenhum treino ainda.<br>Toque em <strong>+</strong> para criar o primeiro.</p></div>`;
     return;
   }
-  list.innerHTML = workouts.map(w => `
+  list.innerHTML = data.workouts.map((w, idx) => `
     <div class="card">
       <div class="card-header">
         <div class="card-tag">${esc(w.name)}</div>
         <div class="card-actions">
+          <button class="btn-sm" onclick="moveWorkout('${w.id}',-1)" ${idx === 0 ? 'style="opacity:0.2;pointer-events:none"' : ''}>▲</button>
+          <button class="btn-sm" onclick="moveWorkout('${w.id}',1)" ${idx === data.workouts.length-1 ? 'style="opacity:0.2;pointer-events:none"' : ''}>▼</button>
           <button class="btn-sm" onclick="editWorkout('${w.id}')">✏️</button>
           <button class="btn-sm" onclick="deleteWorkout('${w.id}')">🗑️</button>
         </div>
@@ -908,22 +545,23 @@ function renderWorkouts() {
     </div>`).join('');
 }
 
-function openNewWorkout() {
-  editingWorkoutId = null;
-  document.getElementById('edit-workout-title').textContent = 'NOVO TREINO';
+function openNew() {
+  editingId = null;
+  document.getElementById('edit-title').textContent = 'NOVO TREINO';
   ['wk-name','wk-exercises','wk-series','wk-rest'].forEach(id => document.getElementById(id).value = '');
-  show('edit-workout-screen');
+  show('edit-screen');
+  setTimeout(() => document.getElementById('wk-name').focus(), 150);
 }
 
 function editWorkout(id) {
   const w = data.workouts.find(x => x.id === id); if (!w) return;
-  editingWorkoutId = id;
-  document.getElementById('edit-workout-title').textContent = 'EDITAR TREINO';
+  editingId = id;
+  document.getElementById('edit-title').textContent = 'EDITAR TREINO';
   document.getElementById('wk-name').value = w.name;
   document.getElementById('wk-exercises').value = w.exercises;
   document.getElementById('wk-series').value = w.series;
   document.getElementById('wk-rest').value = w.rest;
-  show('edit-workout-screen');
+  show('edit-screen');
 }
 
 function saveWorkout() {
@@ -935,14 +573,25 @@ function saveWorkout() {
   if (!exercises || exercises < 1) { alert('Informe a quantidade de exercícios!'); return; }
   if (!series || series < 1) { alert('Informe o número de séries!'); return; }
   if (isNaN(rest)) { alert('Informe o tempo de descanso!'); return; }
-  if (editingWorkoutId) Object.assign(data.workouts.find(x => x.id === editingWorkoutId), { name, exercises, series, rest });
-  else data.workouts.push({ id: Date.now().toString(), groupId: currentGroupId, name, exercises, series, rest });
-  persist(); renderWorkouts(); show('group-screen');
+  if (editingId) {
+    Object.assign(data.workouts.find(x => x.id === editingId), { name, exercises, series, rest });
+  } else {
+    data.workouts.push({ id: Date.now().toString(), name, exercises, series, rest });
+  }
+  persist(); renderWorkouts(); show('home-screen');
 }
 
 function deleteWorkout(id) {
   if (!confirm('Excluir este treino?')) return;
   data.workouts = data.workouts.filter(w => w.id !== id);
+  persist(); renderWorkouts();
+}
+
+function moveWorkout(id, dir) {
+  const idx = data.workouts.findIndex(w => w.id === id);
+  const newIdx = idx + dir;
+  if (newIdx < 0 || newIdx >= data.workouts.length) return;
+  [data.workouts[idx], data.workouts[newIdx]] = [data.workouts[newIdx], data.workouts[idx]];
   persist(); renderWorkouts();
 }
 
@@ -981,18 +630,14 @@ function doneSerie() {
   currentSerie++;
   renderActiveExercise();
   if (currentSerie >= ex.series) {
-    // Todas as séries deste exercício concluídas
     document.getElementById('btn-done-serie').disabled = true;
     const isLast = currentExIdx + 1 >= ex.exercises;
     if (isLast) {
-      // Último exercício: termina o treino direto
       finishWorkout();
     } else {
-      // Mostra tela "Próximo exercício" sem descanso
       showNextExercise(currentExIdx + 2);
     }
   } else {
-    // Entre séries do mesmo exercício: descanso normal
     document.getElementById('rest-sub').textContent = `INDO PARA SÉRIE ${currentSerie + 1} / ${ex.series}`;
     startRest(ex.rest, () => renderActiveExercise());
   }
@@ -1019,7 +664,7 @@ function skipToNext() {
   renderActiveExercise();
 }
 
-// ── REST (só entre séries) ──
+// ── REST ──
 function startRest(seconds, cb) {
   clearRest(); restCallback = cb; isResting = true;
   if (seconds <= 0) { isResting = false; cb(); return; }
@@ -1039,19 +684,19 @@ function startRest(seconds, cb) {
 
 function confirmSkipRest() { if (confirm('Pular o descanso?')) skipRest(); }
 
+function skipRest() {
+  const cb = restCallback; clearRest();
+  document.getElementById('rest-overlay').classList.remove('show');
+  document.getElementById('rest-countdown').classList.remove('tick');
+  if (cb) cb();
+}
+
 function backFromRest() {
   clearRest();
   document.getElementById('rest-overlay').classList.remove('show');
   document.getElementById('rest-countdown').classList.remove('tick');
   currentSerie = Math.max(0, currentSerie - 1);
   renderActiveExercise();
-}
-
-function skipRest() {
-  const cb = restCallback; clearRest();
-  document.getElementById('rest-overlay').classList.remove('show');
-  document.getElementById('rest-countdown').classList.remove('tick');
-  if (cb) cb();
 }
 
 function clearRest() {
@@ -1080,7 +725,7 @@ function confirmStop() {
 
 // ── BACKUP ──
 function exportJSON() {
-  if (data.groups.length === 0 && data.workouts.length === 0) { showToast('Nada para exportar'); return; }
+  if (data.workouts.length === 0) { showToast('Nada para exportar'); return; }
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -1094,15 +739,13 @@ function importJSON(event) {
   reader.onload = (e) => {
     try {
       const imported = JSON.parse(e.target.result);
-      if (!imported.groups || !imported.workouts) throw new Error();
-      const hasData = data.groups.length > 0 || data.workouts.length > 0;
+      if (!imported.workouts) throw new Error();
+      const hasData = data.workouts.length > 0;
       if (hasData && confirm('Mesclar? (Cancelar = substituir tudo)')) {
-        const egIds = new Set(data.groups.map(g => g.id));
         const ewIds = new Set(data.workouts.map(w => w.id));
-        imported.groups.forEach(g => { if (!egIds.has(g.id)) data.groups.push(g); });
         imported.workouts.forEach(w => { if (!ewIds.has(w.id)) data.workouts.push(w); });
       } else { data = imported; }
-      persist(); renderGroups(); show('home-screen'); showToast('✓ Importado!');
+      persist(); renderWorkouts(); show('home-screen'); showToast('✓ Importado!');
     } catch { showToast('❌ Arquivo inválido'); }
     event.target.value = '';
   };
@@ -1118,16 +761,9 @@ function showToast(msg) {
   toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
 }
 
-// ── WAKE LOCK PERSISTENTE ──
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'visible' && activeWorkout) requestWakeLock();
-});
-
 // ── INIT ──
-renderGroups();
+renderWorkouts();
 checkResume();
-const savedToken = localStorage.getItem('drive_token');
-if (savedToken) { driveToken = savedToken; driveFileId = localStorage.getItem('drive_file_id'); updateDriveUI(true); loadFromDrive(); }
 </script>
 </body>
 </html>
