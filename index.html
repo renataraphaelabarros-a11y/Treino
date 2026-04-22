@@ -638,6 +638,13 @@ function setDriveSyncing(on) {
   dot.className = 'drive-dot ' + (on ? 'syncing' : (driveToken ? 'connected' : ''));
 }
 
+function handleDriveAuthError() {
+  driveToken = null; driveFileId = null;
+  localStorage.removeItem('drive_token'); localStorage.removeItem('drive_file_id');
+  updateDriveUI(false);
+  showToast('⚠️ Sessão Drive expirada — reconecte');
+}
+
 async function loadFromDrive() {
   if (!driveToken) return;
   try {
@@ -646,6 +653,7 @@ async function loadFromDrive() {
       `https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=name='${DRIVE_FILE_NAME}'&fields=files(id)`,
       { headers: { Authorization: `Bearer ${driveToken}` } }
     );
+    if (search.status === 401) { handleDriveAuthError(); return; }
     const result = await search.json();
     if (result.files && result.files.length > 0) {
       driveFileId = result.files[0].id;
@@ -654,6 +662,7 @@ async function loadFromDrive() {
         `https://www.googleapis.com/drive/v3/files/${driveFileId}?alt=media`,
         { headers: { Authorization: `Bearer ${driveToken}` } }
       );
+      if (file.status === 401) { handleDriveAuthError(); return; }
       const imported = await file.json();
       if (imported.groups && imported.workouts) {
         data = imported;
@@ -677,17 +686,20 @@ async function saveToDrive() {
     const body = JSON.stringify(data);
     const fileId = driveFileId || localStorage.getItem('drive_file_id');
     if (fileId) {
-      await fetch(`https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`,
+      const res = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`,
         { method: 'PATCH', headers: { Authorization: `Bearer ${driveToken}`, 'Content-Type': 'application/json' }, body });
+      if (res.status === 401) { handleDriveAuthError(); return; }
     } else {
       const meta = await fetch('https://www.googleapis.com/drive/v3/files',
         { method: 'POST', headers: { Authorization: `Bearer ${driveToken}`, 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: DRIVE_FILE_NAME, parents: ['appDataFolder'] }) });
+      if (meta.status === 401) { handleDriveAuthError(); return; }
       const metaJson = await meta.json();
       driveFileId = metaJson.id;
       localStorage.setItem('drive_file_id', driveFileId);
-      await fetch(`https://www.googleapis.com/upload/drive/v3/files/${driveFileId}?uploadType=media`,
+      const res2 = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${driveFileId}?uploadType=media`,
         { method: 'PATCH', headers: { Authorization: `Bearer ${driveToken}`, 'Content-Type': 'application/json' }, body });
+      if (res2.status === 401) { handleDriveAuthError(); return; }
     }
     showToast('☁️ Salvo no Drive');
   } catch(e) { showToast('Erro ao salvar no Drive'); }
